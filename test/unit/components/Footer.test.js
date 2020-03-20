@@ -1,14 +1,14 @@
 import { shallowMount } from '@vue/test-utils'
 import Footer from '@/components/Footer'
 
-describe('Footer', () => {
+describe('Footer should', () => {
   let wrapper
 
   beforeEach(() => {
     wrapper = shallowMount(Footer)
   })
 
-  it('shows about section', () => {
-    expect(wrapper.find('h4').text()).toEqual('About SecurityHub')
+  it('display as expected', () => {
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

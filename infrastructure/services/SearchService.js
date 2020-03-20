@@ -3,7 +3,7 @@ import MiniSearch from 'minisearch'
 export default class SearchService {
   constructor () {
     this.searchEngine = new MiniSearch({
-      fields: ['name', 'shortDescription', 'keywords', 'maintainers'],
+      fields: ['name', 'shortDescription'],
       storeFields: ['id', 'name', 'kind'],
       searchOptions: {
         boost: { name: 2 },

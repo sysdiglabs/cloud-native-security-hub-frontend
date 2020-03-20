@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" v-html="htmlContent" />
+  <component :is="tag" v-if="content" class="markdown" v-html="htmlContent" />
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
   props: {
     content: {
       type: String,
-      required: true
+      default: undefined
     },
     tag: {
       type: String,
@@ -22,7 +22,11 @@ export default {
   },
   computed: {
     htmlContent () {
-      const converter = new showdown.Converter({ noHeaderId: true, headerLevelStart: this.headerLevelStart })
+      const converter = new showdown.Converter({
+        noHeaderId: true,
+        headerLevelStart: this.headerLevelStart,
+        openLinksInNewWindow: true
+      })
       return converter.makeHtml(this.content)
     }
   }

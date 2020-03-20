@@ -1,53 +1,60 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import ContentService from '@/infrastructure/services/ContentService'
-import componentsResponse from '@/test/fixtures/responses/components'
-import components, { component } from '@/test/fixtures/Component'
-import vendorsResponse from '@/test/fixtures/responses/vendors'
-import vendors, { vendor } from '@/test/fixtures/Vendor'
+import resourcesResponse from '@/test/fixtures/responses/resources'
+import resources, { resource } from '@/test/fixtures/Resource'
+import appsResponse from '@/test/fixtures/responses/apps'
+import apps, { app } from '@/test/fixtures/App'
 
 const httpClient = new MockAdapter(axios)
 const contentService = new ContentService(axios)
 
 describe('Content Service', () => {
-  it('gets components', async () => {
-    httpClient.onGet('/resources').reply(200, componentsResponse)
+  it('gets resources', async () => {
+    httpClient.onGet('/resources').reply(200, resourcesResponse)
 
-    const result = await contentService.getComponents()
+    const result = await contentService.getResources()
 
-    expect(result).toEqual(components)
+    expect(result).toEqual(resources)
   })
 
-  it('gets a component by ID', async () => {
-    httpClient.onGet(`/resources/${component.kind}/${component.id}`).reply(200, componentsResponse[0])
+  it('gets a resource by ID', async () => {
+    httpClient.onGet(`/resources/${resource.kind}/${resource.id}`).reply(200, resourcesResponse[0])
 
-    const result = await contentService.getComponent(component.kind, component.id)
+    const result = await contentService.getResource(resource.kind, resource.id)
 
-    expect(result).toEqual(component)
+    expect(result).toEqual(resource)
   })
 
-  it('gets vendors', async () => {
-    httpClient.onGet('/vendors').reply(200, vendorsResponse)
+  it('gets apps', async () => {
+    httpClient.onGet('/apps').reply(200, appsResponse)
 
-    const result = await contentService.getVendors()
+    const result = await contentService.getApps()
 
-    expect(result).toEqual(vendors)
+    expect(result).toEqual(apps)
   })
 
-  it('gets a vendor by ID', async () => {
-    httpClient.onGet(`/vendors/${vendor.id}`).reply(200, vendorsResponse[0])
-    httpClient.onGet(`/vendors/${vendor.id}/resources`).reply(200, componentsResponse)
+  it('gets a app by ID', async () => {
+    httpClient.onGet(`/apps/${app.id}`).reply(200, appsResponse[0])
 
-    const result = await contentService.getVendor(vendor.id)
+    const result = await contentService.getApp(app.id)
 
-    expect(result).toEqual({ vendor, vendorComponents: componentsResponse })
+    expect(result).toEqual(app)
   })
 
-  it('gets a component by ID and version', async () => {
-    httpClient.onGet(`/resources/${component.kind}/${component.id}/version/${component.version}`).reply(200, componentsResponse[0])
+  it('gets sorted app resources by version', async () => {
+    httpClient.onGet(`/apps/${app.id}/${app.availableVersions[0]}/resources`).reply(200, resourcesResponse)
 
-    const result = await contentService.getComponentByVersion(component.kind, component.id, component.version)
+    const result = await contentService.getAppResourcesByVersion(app.id, app.availableVersions[0])
 
-    expect(result).toEqual(component)
+    expect(result).toEqual(resourcesResponse)
+  })
+
+  it('gets a resource by kind, ID and version', async () => {
+    httpClient.onGet(`/resources/${resource.kind}/${resource.id}/${resource.version}`).reply(200, resourcesResponse[0])
+
+    const result = await contentService.getResourceByVersion(resource.kind, resource.id, resource.version)
+
+    expect(result).toEqual(resource)
   })
 })

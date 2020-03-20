@@ -1,5 +1,6 @@
 module.exports = {
   moduleNameMapper: {
+    '.+\\.(css|styl|less|sass|scss|svg|png|jpg|gif|ttf|woff|woff2)(\\?inline)?$': '<rootDir>/test/unit/mocks/transform.js',
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
     '^vue$': 'vue/dist/vue.common.js'
@@ -9,8 +10,8 @@ module.exports = {
     '^.+\\.js$': 'babel-jest',
     '.*\\.(vue)$': 'vue-jest'
   },
-  'collectCoverage': true,
-  'collectCoverageFrom': [
+  collectCoverage: true,
+  collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue',
     '<rootDir>/infrastructure/**/*.js',

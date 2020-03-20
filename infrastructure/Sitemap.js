@@ -1,12 +1,13 @@
 import axios from 'axios'
-import { getCanonicalForComponent, getCanonicalForVendor } from './Canonical'
+import { getCanonicalForApp } from './Canonical'
 
 export async function getSitemapRoutes () {
-  const components = await axios.get(process.env.API_URL + '/resources')
-  const vendors = await axios.get(process.env.API_URL + '/vendors')
+  const apps = await axios.get(process.env.API_URL + '/apps')
 
   return [
-    ...components.data.map(getCanonicalForComponent),
-    ...vendors.data.map(getCanonicalForVendor)
+    ...apps.data
+      .filter(app => app.available)
+      .flatMap(app => app.availableVersions.map(version => ({ app, version })))
+      .map(({ app, version }) => getCanonicalForApp(app.id, app.availableVersions, version))
   ]
 }

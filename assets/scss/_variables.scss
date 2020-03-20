@@ -1,0 +1,35 @@
+$animationDuration: 1s;
+
+$font-family-base: 'Lato';
+$headings-font-family: 'Lato';
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1440px
+);
+
+$primary: #E74C24;
+$secondary: #F2A591;
+$white: #fff;
+$footer-color: #736E6E;
+$black: #000000;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary
+);
+
+$separator-width: 45px;
+$separator-margin: 16px;
+
+$font-L: 16px;
+
+$weight-bold: 700;
+
+:root {
+  --footer-height: 140px;
+  --header-height: 228.8px;
+  --header-margin: 32px;
+}

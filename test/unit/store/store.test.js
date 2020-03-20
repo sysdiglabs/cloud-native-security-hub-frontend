@@ -1,6 +1,6 @@
 import { actions } from '@/store'
-import components, { component } from '~/test/fixtures/Component'
-import vendors, { vendor } from '~/test/fixtures/Vendor'
+import resources, { resource } from '~/test/fixtures/Resource'
+import apps, { app } from '~/test/fixtures/App'
 
 describe('store', () => {
   describe('action', () => {
@@ -8,10 +8,12 @@ describe('store', () => {
     const context = {
       $services: {
         contentService: {
-          getComponents: jest.fn(() => components),
-          getComponent: jest.fn(() => component),
-          getVendors: jest.fn(() => vendors),
-          getVendor: jest.fn(() => ({ vendor, vendorComponents: components }))
+          getResources: jest.fn(() => resources),
+          getResource: jest.fn(() => resource),
+          getResourceByVersion: jest.fn(() => resource),
+          getApps: jest.fn(() => apps),
+          getApp: jest.fn(() => app),
+          getAppResourcesByVersion: jest.fn(() => resources)
         }
       }
     }
@@ -20,25 +22,20 @@ describe('store', () => {
       commit = jest.fn()
     })
 
-    it('gets components on init so we have them available for search', async () => {
+    it('gets apps on init so we have them available for search', async () => {
       await actions.nuxtServerInit.call(context, { commit }, {})
 
-      expect(commit).toHaveBeenCalledWith('components', components)
+      expect(commit).toHaveBeenCalledWith('apps', apps)
     })
 
-    it('gets a component by ID', async () => {
-      await actions.getComponent.call(context, { commit }, { kind: component.kind, id: component.id })
+    it('gets an app and its resources by ID and version', async () => {
+      await actions.getAppAndResourcesByVersion.call(context, { commit }, { id: app.id, version: app.availableVersions[0] })
 
-      expect(context.$services.contentService.getComponent).toHaveBeenCalledWith(component.kind, component.id)
-      expect(commit).toHaveBeenCalledWith('component', component)
-    })
+      expect(context.$services.contentService.getApp).toHaveBeenCalledWith(app.id)
+      expect(context.$services.contentService.getAppResourcesByVersion).toHaveBeenCalledWith(app.id, app.availableVersions[0])
 
-    it('gets a vendor by ID', async () => {
-      await actions.getVendor.call(context, { commit }, vendor.id)
-
-      expect(context.$services.contentService.getVendor).toHaveBeenCalledWith(vendor.id)
-      expect(commit).toHaveBeenCalledWith('vendor', vendor)
-      expect(commit).toHaveBeenCalledWith('vendorComponents', components)
+      expect(commit).toHaveBeenCalledWith('app', app)
+      expect(commit).toHaveBeenCalledWith('appResources', resources)
     })
   })
 })

@@ -1,47 +1,50 @@
 <template>
   <b-form-group
     id="search"
-    class="search my-auto"
+    class="search"
     label-sr-only
     label="Search"
     label-for="inputSearch"
   >
-    <b-input
-      id="inputSearch"
-      ref="inputSearch"
-      type="search"
-      placeholder="Search"
-      class="input-search"
-      :autofocus="autofocus"
-      :size="size"
-      :value="searchText"
-      @input="searchChange"
-      @keydown.down="searchDown"
-      @keydown.tab="searchDown"
-      @keydown.up="searchUp"
-      @keydown.shift.tab="searchUp"
-      @keydown.enter.prevent="selectSearch"
-      @keydown.right="selectSearch"
-      @keydown.escape.prevent="clearSearch"
-      @blur="clearSearch"
-      @focus="searchForResults"
-    />
-    <div class="searchtext">
-      <span class="searched">{{ searchText }}</span>
-      <span class="suggestion">{{ searchSuggestionsText }}</span>
-    </div>
+    <b-input-group class="input-search">
+      <b-form-input
+        id="inputSearch"
+        ref="inputSearch"
+        type="search"
+        autocomplete="off"
+        :autofocus="autofocus"
+        :size="size"
+        :value="searchText"
+        @input="searchChange"
+        @keydown.down="searchDown"
+        @keydown.tab="searchDown"
+        @keydown.up="searchUp"
+        @keydown.shift.tab="searchUp"
+        @keydown.enter.prevent="selectSearch"
+        @keydown.right="selectSearch"
+        @keydown.escape.prevent="clearSearch"
+        @blur="clearSearch"
+        @focus="searchForResults"
+      />
+      <b-input-group-append>
+        <b-button variant="outline-primary" pill class="btn-search" @click="selectSearch">
+          SEARCH
+        </b-button>
+      </b-input-group-append>
+      <div class="searchtext d-flex align-items-center">
+        <span class="searched">{{ searchText }}</span>
+        <span class="suggestion">{{ searchSuggestionsText }}</span>
+      </div>
+    </b-input-group>
     <b-list-group v-if="searchResults.length > 0" class="resultList">
       <b-list-group-item
         v-for="(result, index) in searchResults"
         :key="result.id + result.kind"
         class="result"
         :active="index === selectedResult"
-        :to="{ name: routeNameForResource(result), params: { id: result.id } }"
+        :to="`/apps/${result.id}`"
       >
         {{ result.name }}
-        <b-badge class="kind float-right" variant="secondary" pill>
-          {{ badgeText(result) }}
-        </b-badge>
       </b-list-group-item>
     </b-list-group>
   </b-form-group>
@@ -106,22 +109,14 @@ export default {
       event.preventDefault()
       if (this.selectedResult >= 0 && this.searchResults[this.selectedResult]) {
         const result = this.searchResults[this.selectedResult]
-        const name = this.routeNameForResource(result)
-        this.$router.push({ name, params: { id: result.id } })
+        this.$router.push(`/apps/${result.id}`)
       } else {
         this.selectAutoCompleteOption()
       }
     },
-    routeNameForResource (result) {
-      switch (result.kind) {
-        case 'OpenPolicyAgentPolicies':
-          return 'open-policy-agent-policies-id'
-        case 'FalcoRules':
-          return 'falco-rules-id'
-      }
-    },
     selectAutoCompleteOption () {
       this.searchText = this.searchSuggestionsFullText
+      if (this.searchResults) { this.selectedResult = 0 }
       this.searchForResults()
     },
     searchForResults () {
@@ -131,14 +126,6 @@ export default {
       if (this.searchResults.length) {
         this.searchText = this.searchResults[i].name
       }
-    },
-    badgeText (result) {
-      switch (result.kind) {
-        case 'OpenPolicyAgentPolicies':
-          return 'Open Policy Agent Policies'
-        case 'FalcoRules':
-          return 'Falco Rules'
-      }
     }
   }
 }
@@ -147,41 +134,73 @@ export default {
 <style scoped lang="scss">
   .search {
     position: relative;
-    height: 38px;
-    .searchtext {
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      bottom: 0;
-      padding: 6px 12px;
-      width: 100%;
-      font-size: 0;
-      .suggestion {
-        font-size: 1rem;
-        z-index: 1;
-        color: rgba(255,255,255,0.5);
-      }
-      .searched {
-        z-index: 1;
-        font-size: 1rem;
-      }
-    }
+    margin: 0;
     .input-search {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      z-index: 2;
-      color: transparent;
-      border: 0px solid #e3ebeb;
-      border-bottom-width: 1px;
-      background-color: transparent;
+      color: black;
+      border: 1px solid #FCE4DE;
+      border-radius: 2rem;
+      background-color: $white;
+      padding: 0.5rem 0.5rem 0.5rem 0;
+      &:focus-within {
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+
+      input {
+        border-radius: 2rem;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        padding: 0 0.5rem 0 1rem;
+        background: transparent;
+        color: transparent;
+        z-index: 2;
+      }
+
+      .btn-search {
+        padding: 0.4rem 2.8rem;
+        text-align: center;
+      }
+
+      .searchtext {
+        font-size: 1rem;
+        z-index: 1;
+        position: absolute;
+        padding: 0 0.5rem 0 1rem;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        .searched {
+          color: #000000;
+        }
+
+        .suggestion{
+          color: #b3b0b0;
+        }
+      }
     }
     .resultList {
       position: absolute;
-      top: 2.4rem;
+      top: 3.45rem;
       z-index: 2;
-      width: 100%;
       color: #415564;
+      width: 100%;
+      @include media-breakpoint-up(md) {
+        width: 80%;
+      }
+    }
+  }
+
+  .search--reduced {
+    .input-search {
+      padding: 0.3rem 0.3rem 0.3rem 0;
+
+      .form-control {
+        height: calc(1em + 0.75rem + 2px);
+      }
+
+      .btn-search {
+        padding: 0.2rem 2rem;
+      }
     }
   }
 </style>

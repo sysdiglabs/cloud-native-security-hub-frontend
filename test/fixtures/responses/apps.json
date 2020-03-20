@@ -1,0 +1,123 @@
+[
+  {
+    "id": "aws-fargate",
+    "kind": "App",
+    "name": "AWS Fargate",
+    "keywords": [
+      "aws",
+      "serverless",
+      "containers"
+    ],
+    "availableVersions": [
+      "1.0.0",
+      "1.0.1"
+    ],
+    "description": "# AWS Fargate\n",
+    "shortDescription": "AWS serverless containers",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/500px-Amazon_Web_Services_Logo.svg.png",
+    "website": "https://aws.amazon.com/fargate/",
+    "available": true
+  },
+  {
+    "id": "elasticsearch",
+    "kind": "App",
+    "name": "Elasticsearch",
+    "keywords": [
+      "logs"
+    ],
+    "availableVersions": [
+      "6.8",
+      "7.6"
+    ],
+    "description": "# Elasticsearch\n",
+    "shortDescription": "Distributed, open source search and analytics engine for all types of data",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Elasticsearch_logo.svg",
+    "website": "https://www.elastic.co/",
+    "available": false
+  },
+  {
+    "id": "elasticsearch",
+    "kind": "App",
+    "name": "Elasticsearch",
+    "keywords": [
+      "logs"
+    ],
+    "availableVersions": [
+      "6.8",
+      "7.6"
+    ],
+    "description": "# Elasticsearch\n",
+    "shortDescription": "Distributed, open source search and analytics engine for all types of data",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Elasticsearch_logo.svg",
+    "website": "https://www.elastic.co/",
+    "available": false
+  },
+  {
+    "id": "elasticsearch",
+    "kind": "App",
+    "name": "Elasticsearch",
+    "keywords": [
+      "logs"
+    ],
+    "availableVersions": [
+      "6.8",
+      "7.6"
+    ],
+    "description": "# Elasticsearch\n",
+    "shortDescription": "Distributed, open source search and analytics engine for all types of data",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Elasticsearch_logo.svg",
+    "website": "https://www.elastic.co/",
+    "available": false
+  },
+  {
+    "id": "elasticsearch",
+    "kind": "App",
+    "name": "Elasticsearch",
+    "keywords": [
+      "logs"
+    ],
+    "availableVersions": [
+      "6.8",
+      "7.6"
+    ],
+    "description": "# Elasticsearch\n",
+    "shortDescription": "Distributed, open source search and analytics engine for all types of data",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Elasticsearch_logo.svg",
+    "website": "https://www.elastic.co/",
+    "available": false
+  },
+  {
+    "id": "elasticsearch",
+    "kind": "App",
+    "name": "Elasticsearch",
+    "keywords": [
+      "logs"
+    ],
+    "availableVersions": [
+      "6.8",
+      "7.6"
+    ],
+    "description": "# Elasticsearch\n",
+    "shortDescription": "Distributed, open source search and analytics engine for all types of data",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Elasticsearch_logo.svg",
+    "website": "https://www.elastic.co/",
+    "available": false
+  },
+  {
+    "id": "elasticsearch",
+    "kind": "App",
+    "name": "Elasticsearch",
+    "keywords": [
+      "logs"
+    ],
+    "availableVersions": [
+      "6.8",
+      "7.6"
+    ],
+    "description": "# Elasticsearch\n",
+    "shortDescription": "Distributed, open source search and analytics engine for all types of data",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Elasticsearch_logo.svg",
+    "website": "https://www.elastic.co/",
+    "available": false
+  }
+]

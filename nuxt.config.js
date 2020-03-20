@@ -4,19 +4,19 @@ require('dotenv').config()
 export default {
   mode: 'universal',
   head: {
-    titleTemplate: '%s | Cloud Native Security Hub',
-    title: 'Security Resources',
+    titleTemplate: '%s | PromCat',
+    title: 'Prometheus Resources',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Discover and share Kubernetes security best practices and configurations' }
+      { hid: 'description', name: 'description', content: 'Discover and share Prometheus best practices and configurations' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
     ]
   },
   modern: 'server',
-  loading: { color: '#007BFF' },
+  loading: { color: '#E74C24' },
   css: ['./assets/scss/custom.scss'],
   googleAnalytics: {
     id: process.env.GOOGLE_ANALYTICS_ID
@@ -73,32 +73,40 @@ export default {
   webfontloader: {
     custom: {
       families: [
-        'Noto Sans',
-        'Fjalla One'
+        'Lato'
       ],
       urls: [
-        'https://fonts.googleapis.com/css?family=Open+Sans&display=swap',
-        'https://fonts.googleapis.com/css?family=Roboto&display=swap'
+        'https://fonts.googleapis.com/css?family=Lato&display=swap'
       ]
     }
+  },
+  styleResources: {
+    scss: [
+      './assets/scss/_variables.scss',
+      './node_modules/bootstrap/scss/_functions.scss',
+      './node_modules/bootstrap/scss/_variables.scss',
+      './node_modules/bootstrap/scss/mixins/_breakpoints.scss'
+    ]
   },
   plugins: [
     '~/plugins/services.js'
   ],
   buildModules: [
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/google-analytics'
   ],
   modules: [
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    ['@nuxtjs/dotenv', { systemvars: true }],
     '@nuxtjs/sitemap',
     'nuxt-webfontloader',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/svg',
+    '@nuxtjs/style-resources'
   ],
   sitemap: {
-    hostname: '',
+    hostname: process.env.BASE_URL,
     path: '/sitemap.xml',
     gzip: true,
     routes () {

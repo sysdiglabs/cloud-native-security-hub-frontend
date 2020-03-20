@@ -3,30 +3,36 @@ export default class ContentService {
     this.httpClient = httpClient
   }
 
-  async getComponents () {
+  async getResources () {
     const result = await this.httpClient.get('/resources')
-    return result.data.map(component => ({ ...component, vendor: { id: component.vendor.toLowerCase(), name: component.vendor } }))
-  }
-
-  async getComponent (kind, id) {
-    const result = await this.httpClient.get(`/resources/${kind}/${id}`)
-    return { ...result.data, vendor: { id: result.data.vendor.toLowerCase(), name: result.data.vendor } }
-  }
-
-  async getComponentByVersion (kind, id, version) {
-    const result = await this.httpClient.get(`/resources/${kind}/${id}/version/${version}`)
-    return { ...result.data, vendor: { id: result.data.vendor.toLowerCase(), name: result.data.vendor } }
-  }
-
-  async getVendors () {
-    const result = await this.httpClient.get('/vendors')
     return result.data
   }
 
-  async getVendor (id) {
-    const vendorResponse = await this.httpClient.get(`/vendors/${id}`)
-    const vendorComponentsResponse = await this.httpClient.get(`/vendors/${id}/resources`)
+  async getResource (kind, id) {
+    const result = await this.httpClient.get(`/resources/${kind}/${id}`)
+    return result.data
+  }
 
-    return { vendor: vendorResponse.data, vendorComponents: vendorComponentsResponse.data }
+  async getResourceByVersion (kind, id, version) {
+    const result = await this.httpClient.get(`/resources/${kind}/${id}/${version}`)
+    return result.data
+  }
+
+  async getApps () {
+    const result = await this.httpClient.get('/apps')
+
+    return result.data
+  }
+
+  async getApp (id) {
+    const result = await this.httpClient.get(`/apps/${id}`)
+
+    return result.data
+  }
+
+  async getAppResourcesByVersion (id, version) {
+    const result = await this.httpClient.get(`/apps/${id}/${version}/resources`)
+
+    return result.data
   }
 }

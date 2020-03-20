@@ -1,13 +1,7 @@
-$font-family-base: 'Open Sans';
-$headings-font-family: 'Roboto';
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1440px
-);
+@import './variables';
+
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-vue/src/index.scss';
 
-$animationDuration: 1s;
 @import "vue2-animate/src/sass/vue2-animate.scss";
+@import "prism/theme";

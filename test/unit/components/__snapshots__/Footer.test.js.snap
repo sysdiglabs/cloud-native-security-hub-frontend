@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should display as expected 1`] = `
+"<footer class=\\"footer\\">
+  <b-container-stub tag=\\"div\\">
+    <b-row-stub tag=\\"div\\" alignh=\\"end\\">
+      <b-col-stub md=\\"12\\" lg=\\"8\\" tag=\\"div\\" class=\\"d-flex align-items-center justify-content-center align-items-lg-start justify-content-lg-start\\">
+        <div class=\\"footer-about\\">
+          <div class=\\"footer-about__promcat\\">
+            <b-link-stub target=\\"_self\\" to=\\"/\\" event=\\"click\\" routertag=\\"a\\">
+              <logo-stub class=\\"logo\\"></logo-stub>
+            </b-link-stub>
+            <div class=\\"contribute\\">
+              <ul class=\\"link-list\\">
+                <li>
+                  <b-link-stub target=\\"_self\\" to=\\"/about\\" event=\\"click\\" routertag=\\"a\\" class=\\"link\\">
+                    What is PromCat?<arrowright-stub class=\\"icon\\"></arrowright-stub>
+                  </b-link-stub>
+                </li>
+                <li>
+                  <b-link-stub href=\\"https://github.com/sysdiglabs/promcat-resources\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link\\">
+                    How to contribute?<arrowright-stub class=\\"icon\\"></arrowright-stub>
+                  </b-link-stub>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class=\\"footer-about__social-network\\">
+            <ul class=\\"link-list\\">
+              <li>
+                <b-link-stub href=\\"https://github.com/sysdiglabs/promcat-frontend\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link github\\">
+                  <github-stub></github-stub>
+                  GitHub
+                </b-link-stub>
+              </li>
+              <li>
+                <b-link-stub href=\\"https://slack.sysdig.com/\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link slack\\">
+                  <slack-stub></slack-stub>
+                  Join us on Slack
+                </b-link-stub>
+              </li>
+              <li>
+                <b-link-stub href=\\"https://github.com/sysdiglabs/promcat-resources/issues\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link issue\\">
+                  <issue-stub></issue-stub>
+                  File an issue
+                </b-link-stub>
+              </li>
+            </ul>
+          </div>
+          <p class=\\"footer-about__copyright\\">
+            © Copyright 2020 Sysdig, Inc. All Rights Reserved.
+          </p>
+        </div>
+      </b-col-stub>
+      <b-col-stub md=\\"12\\" lg=\\"4\\" tag=\\"div\\" class=\\"d-flex align-items-center justify-content-center align-items-lg-end justify-content-lg-end\\">
+        <div class=\\"sponsor text-uppercase\\"><span class=\\"sponsored-by\\">A project by</span> <span class=\\"sr-only\\">Sysdig</span>
+          <sysdiglogo-stub class=\\"sysdig-logo\\"></sysdiglogo-stub>
+        </div>
+      </b-col-stub>
+    </b-row-stub>
+  </b-container-stub>
+</footer>"
+`;
