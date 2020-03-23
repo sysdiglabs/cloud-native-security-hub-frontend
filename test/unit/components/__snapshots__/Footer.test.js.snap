@@ -12,23 +12,16 @@ exports[`Footer should display as expected 1`] = `
             </b-link-stub>
             <div class=\\"contribute\\">
               <ul class=\\"link-list\\">
-                <li>
-                  <b-link-stub target=\\"_self\\" to=\\"/about\\" event=\\"click\\" routertag=\\"a\\" class=\\"link\\">
-                    What is PromCat?<arrowright-stub class=\\"icon\\"></arrowright-stub>
-                  </b-link-stub>
-                </li>
-                <li>
-                  <b-link-stub href=\\"https://github.com/sysdiglabs/promcat-resources\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link\\">
-                    How to contribute?<arrowright-stub class=\\"icon\\"></arrowright-stub>
-                  </b-link-stub>
-                </li>
+                <b-link-stub target=\\"_self\\" to=\\"/about\\" event=\\"click\\" routertag=\\"a\\" tag=\\"li\\" class=\\"link\\">
+                  What is PromCat?<arrowright-stub class=\\"icon\\"></arrowright-stub>
+                </b-link-stub>
               </ul>
             </div>
           </div>
           <div class=\\"footer-about__social-network\\">
             <ul class=\\"link-list\\">
               <li>
-                <b-link-stub href=\\"https://github.com/sysdiglabs/promcat-frontend\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link github\\">
+                <b-link-stub href=\\"https://github.com/sysdiglabs/promcat-resources\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link github\\">
                   <github-stub></github-stub>
                   GitHub
                 </b-link-stub>

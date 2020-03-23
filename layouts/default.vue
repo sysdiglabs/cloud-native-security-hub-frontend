@@ -5,9 +5,5 @@
 </template>
 
 <script>
-export default {
-  created () {
-    this.$store.dispatch('initSearchEngine')
-  }
-}
+export default {}
 </script>

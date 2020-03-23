@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import Header from '@/components/Header'
-import SearchBar from '@/components/SearchBar'
+import Search from '@/components/Search'
 
 describe('Header', () => {
   let wrapper
@@ -8,7 +8,7 @@ describe('Header', () => {
   it('shows small search with brand', () => {
     wrapper = shallowMount(Header)
 
-    expect(wrapper.find(SearchBar).props()).toEqual({ autofocus: undefined, size: undefined, reduced: true })
+    expect(wrapper.find(Search).props()).toEqual({ autofocus: undefined, size: undefined })
   })
 
   it('shows hero title with big search', () => {

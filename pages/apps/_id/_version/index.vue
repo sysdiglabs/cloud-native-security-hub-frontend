@@ -1,71 +1,61 @@
 <template>
-  <div>
-    <Header />
-    <div class="lines" />
-    <b-container class="content">
-      <b-row>
-        <b-col>
-          <h1 class="title">
-            {{ appName }}
-          </h1>
-          <div class="versions">
-            <h2 class="version-title">
-              Available Versions
-            </h2>
-            <b-dropdown
-              id="version-selector"
-              :text="`Version ${currentVersion}`"
-              class="version-selector m-md-2"
-              :disabled="appVersions.length <= 1"
-              variant="outline-primary"
-            >
-              <b-dropdown-item
-                v-for="version in versionsWithoutCurrent"
-                :key="version"
-                :class="{current: version === currentVersion}"
-                :to="`/apps/${appId}/${version}`"
-                class="version"
-              >
-                Version {{ version }}
-              </b-dropdown-item>
-            </b-dropdown>
-          </div>
-          <b-tabs
-            class="tabs"
-            fill
-            justified
-            content-class="tabs-content mt-3"
+  <b-row>
+    <b-col>
+      <h1 class="title">
+        {{ appName }}
+      </h1>
+      <div class="versions">
+        <h2 class="version-title">
+          Available Versions
+        </h2>
+        <b-dropdown
+          id="version-selector"
+          :text="`Version ${currentVersion}`"
+          class="version-selector m-md-2"
+          :disabled="appVersions.length <= 1"
+          variant="outline-primary"
+        >
+          <b-dropdown-item
+            v-for="version in versionsWithoutCurrent"
+            :key="version"
+            :class="{current: version === currentVersion}"
+            :to="`/apps/${appId}/${version}`"
+            class="version"
           >
-            <b-tab
-              v-for="resource in appResources"
-              :key="resource.kind"
-              :title="resource.kind.split(/(?=[A-Z])/).join(' ')"
-              class="tab"
-              lazy
-            >
-              <AppPresentation class="app-presentation" :resource="resource" />
-            </b-tab>
-          </b-tabs>
-        </b-col>
-      </b-row>
-    </b-container>
-    <Footer />
-  </div>
+            Version {{ version }}
+          </b-dropdown-item>
+        </b-dropdown>
+      </div>
+      <b-tabs
+        class="tabs"
+        fill
+        justified
+        content-class="tabs-content mt-3"
+      >
+        <b-tab
+          v-for="resource in appResources"
+          :key="resource.kind"
+          :title="resource.kind.split(/(?=[A-Z])/).join(' ')"
+          class="tab"
+          lazy
+        >
+          <AppPresentation class="app-presentation" :resource="resource" />
+        </b-tab>
+      </b-tabs>
+    </b-col>
+  </b-row>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import AppPresentation from '@/components/AppPresentation'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import { getCanonicalForApp } from '@/infrastructure/Canonical'
 
 export default {
   components: {
-    AppPresentation,
-    Header,
-    Footer
+    AppPresentation
   },
+  layout: 'content',
   async fetch ({ store, params }) {
     await store.dispatch('getAppAndResourcesByVersion', { id: params.id, version: params.version })
   },
@@ -202,61 +192,13 @@ export default {
     line-height: 24px;
   }
 }
-.lines {
-  background-image: url(~assets/images/lines-right-int.svg);
-  background-position: top right;
-  background-repeat: no-repeat;
-  position: absolute;
-  width: 100%;
-  height: 250px;
-  margin-top: -2.5rem;
-}
-.content {
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-  min-height: calc(100vh - var(--footer-height) - var(--header-height) - var(--header-margin));
-  ::v-deep {
-    h2 {
-      color: black;
-      font-size: $font-L;
-      line-height: 19px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 40px;
-      &:after {
-        content: " ";
-        border-top: 2px solid $primary;
-        margin-top: $separator-margin;
-        margin-bottom: $separator-margin;
-        display: block;
-        max-width: $separator-width;
-      }
-    }
-    h3 {
-      color: black;
-      font-size: $font-L;
-      font-weight: $weight-bold;
-      line-height: 19px;
-      letter-spacing: 1px;
-      margin-top: 40px;
-      &:after {
-        content: " ";
-        border-top: 1px solid black;
-        margin-top: $separator-margin;
-        margin-bottom: $separator-margin;
-        display: block;
-        max-width: $separator-width;
-      }
-    }
-    .maintainers {
-      .maintainers-title {
-        display: inline-block;
-        margin-right: 1rem;
-      }
-      .maintainer {
-        font-weight: $weight-bold;
-      }
-    }
+.maintainers {
+  .maintainers-title {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+  .maintainer {
+    font-weight: $weight-bold;
   }
 }
 </style>

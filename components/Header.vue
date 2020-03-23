@@ -23,8 +23,8 @@
               <img class="logo" src="~assets/images/logo.svg" alt="Promcat logo">
             </b-navbar-brand>
           </b-col>
-          <b-col cols="auto">
-            <SearchBar v-if="!hero" reduced class="search-bar--reduced searchSmallForm justify-content-start" />
+          <b-col cols="5">
+            <Search />
           </b-col>
           <b-col cols="auto">
             <div class="sponsor text-uppercase">
@@ -40,12 +40,12 @@
 </template>
 
 <script>
-import SearchBar from '@/components/SearchBar'
+import Search from '@/components/Search'
 import SysdigLogo from '~/assets/images/sysdig-logo.svg?inline'
 
 export default {
   components: {
-    SearchBar,
+    Search,
     SysdigLogo
   },
   props: {
@@ -62,13 +62,15 @@ export default {
   color: $black;
   position: relative;
   &.hero {
-    background-image: url(~assets/images/lines-left.svg), url(~assets/images/lines-right.svg);
-    background-position: -10rem top, 110% top;
-    background-repeat: no-repeat, no-repeat;
-    background-size: contain, contain;
+    @include media-breakpoint-up(xl) {
+      background-image: url(~assets/images/lines-left.svg), url(~assets/images/lines-right.svg);
+      background-position: 0 top, 100% top;
+      background-repeat: no-repeat, no-repeat;
+      background-size: contain, contain;
+    }
   }
   &:not(.hero) {
-    background-color: #FEF6F4;
+    background-color: $secondary-background;
     &::after {
       content: " ";
       position: absolute;

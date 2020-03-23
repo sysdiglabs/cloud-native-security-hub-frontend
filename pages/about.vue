@@ -1,54 +1,57 @@
 <template>
-  <div>
-    <Header hero />
-    <main>
-      <b-container class="content">
-        <b-row>
-          <p>
-            Leo, quis cubilia quisque. Felis commodo euismod facilisis imperdiet turpis per pellentesque nisi, pulvinar dapibus augue. Duis, laoreet laoreet quis litora fames consectetur faucibus nisl non enim tempor semper. Parturient commodo mus ultrices adipiscing sollicitudin rutrum suspendisse congue phasellus! Pretium; varius netus tempus massa tellus dis fermentum aliquet. Vehicula suspendisse torquent quam, nibh cubilia commodo! Massa vitae bibendum ac. Aliquam mauris proin metus tempus phasellus vulputate diam. Ligula maecenas viverra vehicula, ultricies nulla. Morbi dis augue lacinia per commodo netus maecenas feugiat nulla litora porta conubia. Vestibulum ad eget suscipit habitasse curae; facilisi curae;. Gravida consectetur nostra dolor varius penatibus eget donec curae; habitant class augue magna. Pulvinar ut sit arcu purus augue penatibus lacus facilisi viverra nulla nisl curae;. Sem tristique.
-          </p>
-          <p>
-            Ultrices mus sapien primis consectetur. Consequat sollicitudin ornare feugiat venenatis a molestie ad orci convallis mus elit. Hendrerit praesent leo justo quisque fames senectus phasellus faucibus. Sagittis semper aliquet est ante at parturient tristique eu taciti. Neque maecenas volutpat vehicula senectus ante etiam parturient. Per torquent iaculis et suspendisse erat ipsum dignissim neque natoque venenatis. Urna scelerisque tincidunt tincidunt vel nisl, pharetra elit. Pulvinar eget curae; montes vitae natoque lacus fusce. Pulvinar auctor tincidunt nisl vivamus vestibulum. Nisi lectus nostra augue aliquet primis curabitur tortor class, pellentesque sed! Egestas nam laoreet magnis quis a sociis penatibus congue at nisi phasellus lectus. Fames neque enim mi dui posuere. Vel quam neque interdum. Habitasse massa cum nulla urna hac. Est pharetra neque donec vitae, platea curae; per. Venenatis gravida nunc, facilisi tristique curabitur? Tempus tristique curabitur ornare posuere proin ultricies donec vitae ipsum. Adipiscing dolor dis penatibus velit.
-          </p>
-          <p>
-            Fusce suspendisse tempus lorem vitae scelerisque ac sociosqu diam. Tortor class, sociosqu duis id lacinia purus. Aliquam nullam vehicula convallis quam taciti aliquam, dui venenatis imperdiet tortor. Faucibus pulvinar felis gravida sagittis cras ante hac turpis dolor sagittis. Est senectus porttitor posuere ridiculus at justo. Lorem lorem dignissim curabitur netus per vivamus augue ipsum. Bibendum eu, sociis vivamus! At commodo faucibus faucibus mi, etiam adipiscing quis. Pellentesque mi ac porta libero est. Tincidunt, in integer morbi diam fringilla dictum vitae tempus mollis. Parturient sapien primis est urna eget. Luctus dignissim potenti nisl lorem lectus torquent semper elementum. Nostra suspendisse torquent auctor odio tempus montes elit ac nisi. Aliquet dictumst.
-          </p>
-          <p>
-            Quisque sem est enim leo augue. Dignissim orci non rhoncus vestibulum mauris fames, iaculis porttitor convallis fusce lectus. Massa iaculis, ipsum nascetur enim lectus vivamus hendrerit. Consequat orci venenatis urna. Pretium senectus pretium aliquam ultrices aptent quisque! Enim porttitor aptent montes scelerisque ornare dis integer ut himenaeos congue nibh torquent. Sociis tincidunt, urna lobortis libero cras ornare eros odio. Turpis lacinia ridiculus nulla vestibulum. Faucibus ipsum, posuere parturient. Volutpat torquent fermentum nisi himenaeos. Ullamcorper magna non curabitur sollicitudin adipiscing gravida nibh. Per bibendum fusce sit vitae scelerisque. Purus tempus urna vulputate netus cras luctus. Dapibus ultrices parturient rutrum velit sapien litora conubia integer feugiat leo eget faucibus. Dis neque fringilla sollicitudin posuere natoque felis vivamus per. Arcu duis lacus ornare penatibus a taciti. Lacinia vulputate habitasse mus curae;. Elementum habitasse dapibus praesent viverra class lectus nullam sociis! Facilisis cras.
-          </p>
-          <p>
-            Vitae commodo accumsan, facilisis tellus hac aliquet sociosqu curabitur risus aenean himenaeos? Tortor, vitae malesuada litora porta. Hac dolor aliquam aenean, proin nunc sem pellentesque phasellus aenean. Penatibus ridiculus nec mattis sagittis felis lectus, tempor varius senectus. Iaculis facilisi ipsum tempus taciti sagittis aliquet lacinia ligula eu, nibh vestibulum magnis. Leo laoreet diam massa consectetur bibendum vivamus ipsum nibh interdum. Donec quis phasellus arcu accumsan. Est porttitor sem duis malesuada. Dapibus volutpat quis natoque sollicitudin neque platea varius elit scelerisque, ridiculus enim praesent. Praesent, aliquet laoreet dictumst nascetur imperdiet. Ac semper, egestas ultricies dignissim vestibulum. Hendrerit mus eros ipsum sollicitudin facilisi quisque mauris semper parturient lacus etiam. Rutrum lacinia scelerisque ligula. Dui dictumst curae; massa conubia ligula massa dictumst lobortis. Libero euismod, urna eleifend risus elementum faucibus. Fames.
-          </p>
-        </b-row>
-      </b-container>
-    </main>
-    <Footer />
-  </div>
+  <b-row>
+    <h1>PromCat: A resource catalog for enterprise-class Prometheus monitoring</h1>
+    PromCat, short for Prometheus Catalog, is a resource catalog for enterprise-class Prometheus monitoring.
+
+    Prometheus has been revolutionary in the way we monitor our cloud-native environments, attracting immense attention from the open-source community and making the amount of Prometheus monitoring resources explode. Now, there are so many resources available that it's no longer easy to filter out the good ones and discard those that are poorly documented or obsolete.
+    On our journey to provide a scalable Prometheus monitoring experience, we found that companies need a reliable toolbox of monitoring integrations to succeed. In addition to scale and security controls, they need a quick answer to the following question: "How can I monitor X, Y and Z in my environment?"
+    This is why we created PromCat, a resource catalog in which you can find curated, documented and supported monitoring integrations for Kubernetes platforms and cloud-native services.
+
+    <h2>Prometheus ecosystem issues for enterprise monitoring</h2>
+    The strong growth of the Prometheus ecosystem has brought a tremendous amount of monitoring resources. There is more content than ever, but how can we distinguish production-ready resources for enterprise environments from untested DIY experiments? The challenge now isn’t finding content, but finding the right resource to be production-ready without investing days on setup and maintenance.
+    Implementing a reliable Prometheus monitoring system requires a tight integration between metrics sources (exporters, instrumented services or instrumentation libraries for your applications), Prometheus metrics collection (service discovery, jobs, filtering and relabeling or recording rules), dashboards and alerts. Making all of these different pieces work together is strenuous and requires a significant amount of effort to set up and maintain over time.
+
+    Here are some examples of resources you can find:
+    <ul>
+      <li>Multiple exporters for different services and platforms in Github.</li>
+      <li>Many different dashboards, often Grafana dashboards.</li>
+      <li>Kubernetes mixin, which is great, but just scoped to Kubernetes.</li>
+    </ul>
+    With this content, the enterprise monitoring users find multiple issues.
+    The first one is <em>segmentation</em>; there are too many services, platforms, versions and places to look for. It just takes too much time to find the right tools.
+    Once found, how can you <em>evaluate</em> them and make sure the resources are feature-complete and production-grade? How can you be sure they aren't just proof of concepts?
+    And before you can even test the resources, how should you <em>download</em> them? Sometimes they are packaged as container images in DockerHub, but occasionally they are not.
+
+    It’s hard to put everything together, even when using really good exporters or dashboards. The different pieces of the puzzle use various metric names, labels and groupings that aren't necessarily compatible with what you use. You might find compatibility issues between different versions of exporters and specific app versions, dashboards or alerts.
+
+    To complicate things even further, there is a lack of documentation on how to use and integrate these resources.
+    Enterprise monitoring requires confidence in the integrations you use, with support when you configure monitoring for your environment or when things break. We have heard from our customers that they can easily spend a week trying to figure out which version of a Prometheus exporter, dashboards and alerts they should use for an integration, and how to keep up with changes.
+
+    <h2>Supported Prometheus integrations for enterprise-class monitoring</h2>
+    The path is pretty clear for us; we want to provide an enterprise-grade Prometheus monitoring experience. To achieve this, we are offering a backend that scales to millions of time series per second, as well as long term storage. On top of this, our product adapts to customer workflows with full Prometheus compatibility through API and PromQL queries, dashboards and alerts. You can keep using the tools that work for you, like Prometheus open-source exporters, or Grafana dashboards.
+    But all of this is not enough.
+    This is why we decided to bring together all of the awesome monitoring resources that we already recommend to our customers. And going one step further, we’re sharing them so everyone can benefit. This is why PromCat was born.
+
+    Our main goal is not to list all of the available content; the Prometheus project already lists exporters. Instead, we want to raise the bar and list the content we have curated, tested, documented and, most importantly, that we support for Sysdig customers, including:
+    <ul>
+      <li>Prometheus and third-party exporters, packaged as container images with deployment manifests for Kubernetes.</li>
+      <li>Both Grafana and Sysdig dashboards. Most of our customers love Sysdig integrated dashboards, with Team scope and RBAC, which are available alongside our troubleshooting and security functionality. But some advanced users prefer Grafana with Sysdig metrics so they can customize every single detail of their dashboarding experience. Both are supported in this catalog.</li>
+      <li>Both AlertManager and Sysdig PromQL alerts definition.</li>
+      <li>Recording rules, in order to pre-calculate metrics when you have tons of them.</li>
+    </ul>
+    Because many of these resources are already available as open-source software, our compromise is to also give back to the community that has originally created them. We'll contribute any bug fixes and improvements we do as part of our maintenance and support.
+
+    <h2>What’s next for PromCat</h2>
+    We are launching PromCat today with monitoring resources for the Kubernetes control plane, the Istio service mesh and a growing list of AWS services.
+    Sysdig integration engineers are already working to add new resources for typical services in cloud-native environments, and also to improve the packaging and setup process of these integrations in your environment. We have a quite long list of services and platforms we want to extend our support to.
+    We want to decide what comes next together with Sysdig customers and partners.
+    Visit PromCat.io to browse and download resources for enterprise-class Prometheus monitoring. You can use those resources today, along with Sysdig’s new cloud scale Prometheus monitoring capabilities. Haven't tested Sysdig yet? Sign up for a free trial now!.
+  </b-row>
 </template>
 
 <script>
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 
 export default {
-  components: {
-    Header,
-    Footer
-  }
+  layout: 'content'
 }
 </script>
-
-<style scoped lang="scss">
-  .content {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    min-height: calc(100vh - var(--footer-height) - var(--header-height) - var(--header-margin));
-  }
-  .title {
-    text-align: center;
-    width: 100%;
-    margin-top: 0.5rem;
-    font-size: $font-L;
-    line-height: 19px
-  }
-</style>

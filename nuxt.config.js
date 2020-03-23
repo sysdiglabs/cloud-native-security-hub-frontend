@@ -89,7 +89,8 @@ export default {
     ]
   },
   plugins: [
-    '~/plugins/services.js'
+    '~/plugins/services.js',
+    { src: '~/plugins/search.js', ssr: false }
   ],
   buildModules: [
     '@nuxtjs/eslint-module',

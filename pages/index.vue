@@ -4,8 +4,8 @@
     <b-container class="search-bar mx-0" fluid>
       <b-container>
         <b-row no-gutters>
-          <b-col offset-md="3" cols="12" lg="9">
-            <SearchBar class="justify-content-between" />
+          <b-col offset-md="3" cols="12" lg="6" class="py-2">
+            <Search />
           </b-col>
         </b-row>
       </b-container>
@@ -41,7 +41,7 @@ import { mapGetters } from 'vuex'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import AppCard from '@/components/AppCard'
-import SearchBar from '@/components/SearchBar'
+import Search from '@/components/Search'
 import CategoryFilters from '@/components/CategoryFilters'
 
 export default {
@@ -49,7 +49,7 @@ export default {
     Header,
     Footer,
     AppCard,
-    SearchBar,
+    Search,
     CategoryFilters
   },
   computed: {
@@ -73,6 +73,7 @@ export default {
   }
 
   .search-bar {
-    background-color: #FEF6F4;
+    margin-top: 2rem;
+    background-color: $secondary-background;
   }
 </style>

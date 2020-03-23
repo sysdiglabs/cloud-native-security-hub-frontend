@@ -10,23 +10,16 @@
               </b-link>
               <div class="contribute">
                 <ul class="link-list">
-                  <li>
-                    <b-link class="link" to="/about">
-                      What is PromCat?<ArrowRight class="icon" />
-                    </b-link>
-                  </li>
-                  <li>
-                    <b-link class="link" target="_blank" href="https://github.com/sysdiglabs/promcat-resources">
-                      How to contribute?<ArrowRight class="icon" />
-                    </b-link>
-                  </li>
+                  <b-link tag="li" class="link" to="/about">
+                    What is PromCat?<ArrowRight class="icon" />
+                  </b-link>
                 </ul>
               </div>
             </div>
             <div class="footer-about__social-network">
               <ul class="link-list">
                 <li>
-                  <b-link class="link github" target="_blank" href="https://github.com/sysdiglabs/promcat-frontend">
+                  <b-link class="link github" target="_blank" href="https://github.com/sysdiglabs/promcat-resources">
                     <GitHub />
                     GitHub
                   </b-link>
