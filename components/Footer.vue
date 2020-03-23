@@ -78,19 +78,11 @@ export default {
 <style scoped lang="scss">
 .footer {
   width: 100%;
-  background-color: #FCF8F8;
+  background-color: $secondary-background;
   color: gray("600");
   text-align: left;
   padding-top: 2.75rem;
   padding-bottom: 2.75rem;
-
-  // @include media-breakpoint-up(xl) {
-  //   padding: 3.75rem 16rem 3.75rem 16rem;
-  // }
-
-  // @include media-breakpoint-down(md) {
-  //   padding: 2.75rem 1rem 3.75rem 1rem;
-  // }
 
   .link {
     .icon {
