@@ -18,6 +18,6 @@ describe('Header', () => {
       }
     })
 
-    expect(wrapper.find('.title').text()).toContain('Discover and share Prometheus best practices and configurations')
+    expect(wrapper.find('.title').text()).toContain('A resource catalog for enterprise-class Prometheus monitoring')
   })
 })

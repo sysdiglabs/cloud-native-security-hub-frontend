@@ -87,9 +87,9 @@ export default {
   },
   head () {
     return {
-      title: `${this.appName} PromCat version ${this.$route.params.version}`,
+      title: `${this.appName} prometheus catalog version ${this.$route.params.version}`,
       meta: [
-        { hid: 'description', name: 'description', content: `${this.appName} prometheus details` }
+        { hid: 'description', name: 'description', content: `${this.appName} app details` }
       ],
       link: [
         {
@@ -120,13 +120,19 @@ export default {
       width: 320px;
       height: 48px;
       text-align: left;
-      &:hover {
+      &:not(.disabled):hover {
         border: 1px solid $primary;
+      }
+      &.disabled:hover {
+        cursor: default;
       }
       &:after {
         float: right;
         color: $primary;
         margin-top: 10px;
+      }
+      &.disabled:after {
+        display: none;
       }
     }
     .dropdown-item {
@@ -187,18 +193,21 @@ export default {
   }
 }
 .app-presentation {
-  ::v-deep .markdown {
-    font-size: 18px;
-    line-height: 24px;
+  ::v-deep {
+    .markdown {
+      font-size: 18px;
+      line-height: 24px;
+    }
+      .maintainers {
+      .maintainers-title {
+        display: inline-block;
+        margin-right: 1rem;
+      }
+      .maintainer {
+        font-weight: $weight-bold;
+      }
+    }
   }
 }
-.maintainers {
-  .maintainers-title {
-    display: inline-block;
-    margin-right: 1rem;
-  }
-  .maintainer {
-    font-weight: $weight-bold;
-  }
-}
+
 </style>

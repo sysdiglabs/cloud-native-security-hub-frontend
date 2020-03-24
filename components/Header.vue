@@ -5,12 +5,14 @@
         <b-col lg="5">
           <img class="logo" src="~assets/images/logo.svg" alt="Promcat logo">
           <h1 class="title">
-            Discover and share Prometheus best practices and configurations
+            A resource catalog for enterprise-class Prometheus monitoring
           </h1>
           <div class="sponsor text-uppercase">
             <div>A project by</div>
-            <span class="sr-only">Sysdig</span>
-            <SysdigLogo class="sysdig-logo" />
+            <b-link href="https://sysdig.com/" target="_blank">
+              <span class="sr-only">Sysdig</span>
+              <SysdigLogo class="sysdig-logo" />
+            </b-link>
           </div>
         </b-col>
       </b-row>
@@ -23,14 +25,16 @@
               <img class="logo" src="~assets/images/logo.svg" alt="Promcat logo">
             </b-navbar-brand>
           </b-col>
-          <b-col cols="5">
+          <b-col cols="12" lg="5">
             <Search />
           </b-col>
           <b-col cols="auto">
             <div class="sponsor text-uppercase">
               <div>A project by</div>
-              <span class="sr-only">Sysdig</span>
-              <SysdigLogo class="sysdig-logo" />
+              <b-link href="https://sysdig.com/" target="_blank">
+                <span class="sr-only">Sysdig</span>
+                <SysdigLogo class="sysdig-logo" />
+              </b-link>
             </div>
           </b-col>
         </b-row>

@@ -46,8 +46,10 @@ exports[`Footer should display as expected 1`] = `
         </div>
       </b-col-stub>
       <b-col-stub md=\\"12\\" lg=\\"4\\" tag=\\"div\\" class=\\"d-flex align-items-center justify-content-center align-items-lg-end justify-content-lg-end\\">
-        <div class=\\"sponsor text-uppercase\\"><span class=\\"sponsored-by\\">A project by</span> <span class=\\"sr-only\\">Sysdig</span>
-          <sysdiglogo-stub class=\\"sysdig-logo\\"></sysdiglogo-stub>
+        <div class=\\"sponsor text-uppercase\\"><span class=\\"sponsored-by\\">A project by</span>
+          <b-link-stub href=\\"https://sysdig.com/\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\"><span class=\\"sr-only\\">Sysdig</span>
+            <sysdiglogo-stub class=\\"sysdig-logo\\"></sysdiglogo-stub>
+          </b-link-stub>
         </div>
       </b-col-stub>
     </b-row-stub>

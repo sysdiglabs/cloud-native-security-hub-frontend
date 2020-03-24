@@ -72,19 +72,6 @@
         </ul>
       </p>
       <p>Because many of these resources are already available as open-source software, our compromise is to also <strong>give back to the community</strong> that has originally created them. We'll contribute any bug fixes and improvements we do as part of our maintenance and support.</p>
-
-      <h2>What’s next for PromCat</h2>
-
-      <p>We are launching PromCat today with monitoring resources for the Kubernetes control plane, the Istio service mesh and a growing list of AWS services.</p>
-      <p>Sysdig integration engineers are already working to add new resources for typical services in cloud-native environments, and also to improve the packaging and setup process of these integrations in your environment. We have a quite long list of services and platforms we want to extend our support to.</p>
-      <p>We want to decide what comes next together with Sysdig customers and partners.</p>
-      <p>
-        Visit PromCat.io to browse and download resources for enterprise-class Prometheus monitoring. You can use those resources today, along with Sysdig’s new cloud scale <b-link href="https://sysdig.com/blog/cloud-scale-prometheus/" target="_blank">
-          Prometheus monitoring capabilities
-        </b-link>. Haven't tested Sysdig yet? <b-link href="https://sysdig.com/company/free-trial/" target="_blank">
-          Sign up for a free trial
-        </b-link> now!.
-      </p>
     </b-col>
   </b-row>
 </template>
@@ -100,5 +87,9 @@ export default {
 .title {
   width: 50%;
   margin-bottom: 6rem;
+}
+::v-deep img {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 </style>

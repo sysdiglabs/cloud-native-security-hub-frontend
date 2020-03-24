@@ -46,8 +46,10 @@
         <b-col md="12" lg="4" class="d-flex align-items-center justify-content-center align-items-lg-end justify-content-lg-end">
           <div class="sponsor text-uppercase">
             <span class="sponsored-by">A project by</span>
-            <span class="sr-only">Sysdig</span>
-            <SysdigLogo class="sysdig-logo" />
+            <b-link href="https://sysdig.com/" target="_blank">
+              <span class="sr-only">Sysdig</span>
+              <SysdigLogo class="sysdig-logo" />
+            </b-link>
           </div>
         </b-col>
       </b-row>

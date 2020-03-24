@@ -23,13 +23,15 @@ export default {
 
 <style scoped lang="scss">
 .lines {
-  background-image: url(~assets/images/lines-right-int.svg);
-  background-position: top right;
-  background-repeat: no-repeat;
-  position: absolute;
-  width: 100%;
-  height: 250px;
-  margin-top: -2.5rem;
+  @include media-breakpoint-up(lg) {
+    background-image: url(~assets/images/lines-right-int.svg);
+    background-position: top right;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    margin-top: -2.5rem;
+  }
 }
 .content {
   margin-top: 4rem;

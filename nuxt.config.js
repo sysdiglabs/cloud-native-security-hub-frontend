@@ -4,8 +4,8 @@ require('dotenv').config()
 export default {
   mode: 'universal',
   head: {
-    titleTemplate: '%s | PromCat',
-    title: 'Prometheus Resources',
+    titleTemplate: 'PromCat - %s',
+    title: 'A resource catalog for enterprise-class Prometheus monitoring',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
