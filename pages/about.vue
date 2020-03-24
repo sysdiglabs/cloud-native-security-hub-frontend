@@ -79,7 +79,15 @@
 <script>
 
 export default {
-  layout: 'content'
+  layout: 'content',
+  head () {
+    return {
+      title: 'About Prometheus Catalog',
+      meta: [
+        { hid: 'description', name: 'description', content: 'PromCat: A resource catalog for enterprise-class Prometheus monitoring' }
+      ]
+    }
+  }
 }
 </script>
 
