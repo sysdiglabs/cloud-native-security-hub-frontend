@@ -25,7 +25,8 @@ export default {
       const converter = new showdown.Converter({
         noHeaderId: true,
         headerLevelStart: this.headerLevelStart,
-        openLinksInNewWindow: true
+        openLinksInNewWindow: true,
+        literalMidWordUnderscores: true
       })
       return converter.makeHtml(this.content)
     }
