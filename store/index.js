@@ -1,4 +1,4 @@
-const resourcesOrder = ['Description', 'Dashboards', 'ExporterConfig', 'Alerts', 'RecordingRules']
+const resourcesOrder = ['Description', 'Dashboard', 'ExporterConfig', 'Alert', 'RecordingRule']
 const resourcesByOrder = (a, b) => resourcesOrder.indexOf(a.kind) - resourcesOrder.indexOf(b.kind)
 
 export const state = () => ({

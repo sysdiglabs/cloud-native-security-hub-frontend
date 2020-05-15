@@ -3,19 +3,19 @@
 </template>
 
 <script>
-import Alerts from '@/components/AppPresentation/Alerts'
+import Alert from '@/components/AppPresentation/Alert'
 import Description from '@/components/AppPresentation/Description'
 import ExporterConfig from '@/components/AppPresentation/ExporterConfig'
-import Dashboards from '@/components/AppPresentation/Dashboards'
-import RecordingRules from '@/components/AppPresentation/RecordingRules'
+import Dashboard from '@/components/AppPresentation/Dashboard'
+import RecordingRule from '@/components/AppPresentation/RecordingRule'
 
 export default {
   components: {
-    Alerts,
+    Alert,
     Description,
     ExporterConfig,
-    Dashboards,
-    RecordingRules
+    Dashboard,
+    RecordingRule
   },
   props: {
     resource: {
