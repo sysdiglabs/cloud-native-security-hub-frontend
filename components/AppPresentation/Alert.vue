@@ -7,7 +7,7 @@
       :key="alert.kind"
       class="download mr-2"
       :data="alert.data"
-      :filename="`${resource.app} ${alert.kind} alerts.yaml`"
+      :filename="`${resource.app} ${alert.kind} alert.yaml`"
     >
       Import into {{ alert.kind }}
     </Download>
