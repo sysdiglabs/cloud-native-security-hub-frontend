@@ -7,7 +7,7 @@
       <b-form-checkbox
         v-for="category in categories"
         :key="category"
-        class="text-left text-capitalize filter"
+        class="text-left filter"
         :class="{ checked: isSelectedCategory(category) }"
         :checked="isSelectedCategory(category)"
         @change="toggleCategory(category)"
