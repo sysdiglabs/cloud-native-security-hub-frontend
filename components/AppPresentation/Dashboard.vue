@@ -31,7 +31,7 @@
           </h3>
           <markdown :header-level-start="2" :content="dashboard.description" />
           <div slot="footer" class="footer">
-            <Download :data="dashboard.data" :filename="`${dashboard.name}.yaml`">
+            <Download :data="dashboard.data" :filename="`${dashboard.name}.json`">
               Download
             </Download>
           </div>
