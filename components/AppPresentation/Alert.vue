@@ -3,7 +3,7 @@
     <markdown :header-level-start="2" :content="resource.description" />
     <maintainers :maintainers="resource.maintainers" />
     <Download
-      v-for="alert in resource.configurations"
+      v-for="alert in kindPrometheus"
       :key="alert.kind"
       class="download mr-2"
       :data="alert.data"
@@ -29,6 +29,11 @@ export default {
     resource: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    kindPrometheus () {
+      return this.resource.configurations.filter(configuration => configuration.kind === 'Prometheus')
     }
   }
 }
