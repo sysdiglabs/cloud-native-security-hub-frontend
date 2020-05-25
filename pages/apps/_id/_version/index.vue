@@ -35,7 +35,7 @@
         <b-tab
           v-for="resource in appResources"
           :key="resource.kind"
-          :title="resource.kind.split(/(?=[A-Z])/).join(' ')"
+          :title="tabTitle(resource.kind)"
           class="tab"
           lazy
         >
@@ -83,6 +83,18 @@ export default {
   methods: {
     copy (text) {
       navigator.clipboard.writeText(text)
+    },
+    tabTitle (kind) {
+      switch (kind) {
+        case 'RecordingRule':
+          return 'Recording Rules'
+        case 'Dashboard':
+          return 'Dashboards'
+        case 'Alert':
+          return 'Alerts'
+        default:
+          return kind.split(/(?=[A-Z])/).join(' ')
+      }
     }
   },
   head () {
