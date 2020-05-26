@@ -3,15 +3,19 @@
     <markdown :header-level-start="2" :content="resource.description" />
     <maintainers :maintainers="resource.maintainers" />
     <Download
+      v-for="config in resource.configurations"
+      :key="config.name"
       class="download mr-2"
-      :data="resource.data"
-      :filename="`${resource.app}_RecordingRules.yaml`"
+      :data="config.data"
+      :filename="`rules.yaml`"
     >
       Import into Prometheus
     </Download>
     <prism
+      v-for="config in resource.configurations"
+      :key="`${config.name}`"
       language="yaml"
-      :code="resource.data"
+      :code="config.data"
     />
   </div>
 </template>

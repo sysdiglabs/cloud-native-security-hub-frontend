@@ -2,9 +2,20 @@
   <div>
     <markdown :header-level-start="2" :content="resource.description" />
     <maintainers :maintainers="resource.maintainers" />
+    <Download
+      v-for="config in resource.configurations"
+      :key="config.name"
+      class="download mr-2"
+      :data="config.data"
+      :filename="`${config.name}`"
+    >
+      {{ config.name }}
+    </Download>
     <prism
+      v-for="config in resource.configurations"
+      :key="`${config.name}`"
       language="yaml"
-      :code="resource.data"
+      :code="config.data"
     />
   </div>
 </template>
@@ -13,12 +24,14 @@
 import Prism from '@/components/Prism'
 import Markdown from '@/components/Markdown'
 import Maintainers from '@/components/Maintainers'
+import Download from '@/components/Download'
 
 export default {
   components: {
     Prism,
     Markdown,
-    Maintainers
+    Maintainers,
+    Download
   },
   props: {
     resource: {
