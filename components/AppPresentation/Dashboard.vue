@@ -22,8 +22,8 @@
                 :alt="dashboard.name"
               />
             </b-link>
-            <b-img v-if="dashboard.kind === 'sysdig'" src="~assets/icons/sysdig-shovel.svg" class="icon sysdig" alt="Sysdig logo" />
-            <b-img v-if="dashboard.kind === 'grafana'" src="~assets/icons/grafana-logo.svg" class="icon grafana" alt="Grafana logo" />
+            <b-img v-if="dashboard.kind === 'Sysdig'" src="~assets/icons/sysdig-shovel.svg" class="icon sysdig" alt="Sysdig logo" />
+            <b-img v-if="dashboard.kind === 'Grafana'" src="~assets/icons/grafana-logo.svg" class="icon grafana" alt="Grafana logo" />
             <span class="sr-only">{{ dashboard.kind }}</span>
           </div>
           <h3 class="title">
