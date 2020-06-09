@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: staging
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/mateo-burillo-ns/promcat-frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+          - name: BASE_URL
+            value: frontend:8080
+          - name: API_URL
+            value: backend:32097
