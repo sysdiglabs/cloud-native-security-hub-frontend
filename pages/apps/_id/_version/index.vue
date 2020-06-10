@@ -6,7 +6,7 @@
       </h1>
       <div class="versions">
         <h2 class="version-title">
-          Available Versions
+          Supported Versions
         </h2>
         <b-dropdown
           id="version-selector"
