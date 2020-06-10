@@ -1,7 +1,6 @@
 <template>
   <div>
     <markdown :header-level-start="2" :content="resource.description" />
-    <maintainers :maintainers="resource.maintainers" />
     <Download
       v-for="config in resource.configurations"
       :key="config.name"
@@ -23,14 +22,12 @@
 <script>
 import Prism from '@/components/Prism'
 import Markdown from '@/components/Markdown'
-import Maintainers from '@/components/Maintainers'
 import Download from '@/components/Download'
 
 export default {
   components: {
     Prism,
     Markdown,
-    Maintainers,
     Download
   },
   props: {
