@@ -22,6 +22,6 @@ spec:
         - containerPort: 3000
         env:
           - name: BASE_URL
-            value: frontend:8080
+            value: frontend:3000
           - name: API_URL
-            value: backend:32097
+            value: backend:8080
