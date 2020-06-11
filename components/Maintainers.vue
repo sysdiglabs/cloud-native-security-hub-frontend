@@ -3,19 +3,20 @@
     <h3 class="maintainers-title">
       Maintainers
     </h3>
-    <span v-for="maintainer in maintainers" :key="maintainer.link" class="maintainer">
-      <b-link :href="`${maintainer.link}`" target="_blank" rel="noopener,noreferrer,noindex,nofollow">
-        {{ maintainer.name }}
-      </b-link>
-    </span>
+    <markdown :header-level-start="2" :content="maintainers" />
   </div>
 </template>
 
 <script>
+import Markdown from '@/components/Markdown'
+
 export default {
+  components: {
+    Markdown
+  },
   props: {
     maintainers: {
-      type: Array,
+      type: String,
       required: true
     }
   }
