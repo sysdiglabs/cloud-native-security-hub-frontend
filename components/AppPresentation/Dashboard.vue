@@ -1,6 +1,5 @@
 <template>
   <div>
-    <maintainers :maintainers="resource.maintainers" />
     <b-row class="dashboard-list">
       <b-col
         v-for="dashboard in resource.configurations"
@@ -43,13 +42,11 @@
 
 <script>
 import Markdown from '@/components/Markdown'
-import Maintainers from '@/components/Maintainers'
 import Download from '@/components/Download'
 
 export default {
   components: {
     Markdown,
-    Maintainers,
     Download
   },
   props: {

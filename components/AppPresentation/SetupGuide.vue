@@ -1,7 +1,10 @@
 <template>
   <div>
     <markdown :header-level-start="2" :content="resource.description" />
-    <maintainers :maintainers="resource.maintainers" />
+    <SysdigInstall
+      :appId="resource.appID"
+      :version="resource.appVersion[0]"
+    />
     <Download
       v-for="config in resource.configurations"
       :key="config.name"
@@ -23,15 +26,15 @@
 <script>
 import Prism from '@/components/Prism'
 import Markdown from '@/components/Markdown'
-import Maintainers from '@/components/Maintainers'
 import Download from '@/components/Download'
+import SysdigInstall from '@/components/SysdigInstall'
 
 export default {
   components: {
     Prism,
     Markdown,
-    Maintainers,
-    Download
+    Download,
+    SysdigInstall
   },
   props: {
     resource: {

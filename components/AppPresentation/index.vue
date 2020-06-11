@@ -5,7 +5,7 @@
 <script>
 import Alert from '@/components/AppPresentation/Alert'
 import Description from '@/components/AppPresentation/Description'
-import ExporterConfig from '@/components/AppPresentation/ExporterConfig'
+import SetupGuide from '@/components/AppPresentation/SetupGuide'
 import Dashboard from '@/components/AppPresentation/Dashboard'
 import RecordingRule from '@/components/AppPresentation/RecordingRule'
 
@@ -13,7 +13,7 @@ export default {
   components: {
     Alert,
     Description,
-    ExporterConfig,
+    SetupGuide,
     Dashboard,
     RecordingRule
   },

@@ -1,7 +1,6 @@
 <template>
   <div>
     <markdown :header-level-start="2" :content="resource.description" />
-    <maintainers :maintainers="resource.maintainers" />
     <Download
       v-for="alert in kindPrometheus"
       :key="alert.kind"
@@ -16,13 +15,11 @@
 
 <script>
 import Markdown from '@/components/Markdown'
-import Maintainers from '@/components/Maintainers'
 import Download from '@/components/Download'
 
 export default {
   components: {
     Markdown,
-    Maintainers,
     Download
   },
   props: {
