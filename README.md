@@ -47,6 +47,11 @@ $ npm run serve
 $ git push --no-verify
 ```
 
+Module dependencies can be fixed by:
+```
+rm -fr node_modules package-lock.json
+npm install
+```
 ## Code style
 
 We're following the default set of rules of eslint according to nuxt. Please use the .editorconfig to follow the indent style.

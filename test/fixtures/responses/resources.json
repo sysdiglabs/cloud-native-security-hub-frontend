@@ -10,12 +10,7 @@
     "appVersion": [
       "1.3.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "description": "# Alerts\n## HighCpuUtilizationRate\nIn the definition of the Fargate tasks you can reserve the CPU units that it will be able to use. If the task demands more CPU that reserved the it can affect the performance of the services running in it.\n\nThis alert triggers when a threshold for CPU utilization is passed for a certain period of time. \n\nThe recommended value for this alert is 75% of the reserved CPU for the task for 10 minutes.\n\n## HighMemoryUtilizationRate\nIn the definition of the Fargate tasks you can reserve the memory that it will be able to use. If the task demands more memory that reserved the it can affect the performance of the services running in it.\n\nThis alert triggers when a threshold for memory utilization is passed for a certain period of time. \n\nThe recommended value for this alert is 75% of the reserved memory for the task for 10 minutes. \n\n## RecurringPendingTasks\nWhen a task is launched in Fargate it stays in 'pending' state until it pass to 'running' state. If a task cannot be launched properly, it will stay in 'pending' state. \n\nErrors in the definition of the task or in the code can cause some tasks to stay in 'pending' state indefinitely. \n\nThis alert triggers when there are pending tasks in the cluster for more than 10 minutes. \n\n# Installing the alerts\n## In Prometheus\nCopy the alerts for Prometheus and paste them inside of the configuration file in the groups section:\n```yaml\n[...]\ngroups:\n- name: example\n    # Insert here the alerts\n    rules: \n``` \n## In Sysdig Monitor\nTo install these alerts in Sysdig Monitor, contact with the support service. \n",
     "configurations": [
       {
@@ -39,12 +34,7 @@
     "appVersion": [
       "1.3.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "configurations": [
       {
         "name": "Fargate Golden Signals",
@@ -73,12 +63,7 @@
     "appVersion": [
       "1.3.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "data": "# AWS Fargate\nAWS Fargate is a serverless compute engine for containers that works with both Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS).\n\nThe metrics for AWS Fargate are obtained through AWS Cloudwatch. Using the [YACE exporter](https://github.com/ivx/yet-another-cloudwatch-exporter). \n\n# Exporter configuration\n## Enabling Container Insights\nYou need to enable Container Insights to gather metrics for Fargate instance:\n- [How to set up Container Insights on AWS ECS](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-ECS.html)\n- [How to set up Container Insights on AWS EKS and Kubernetes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html)\n\n## AWS permissions\nThe exporter needs permissions to access the resources from the AWS account. \n\nFirst, create an AWS IAM policy on your AWS infrastructure allowing read CloudWatch metrics and get resources by tags. Here is a AWS IAM configuration example:\n\n```\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"CloudWatchExporterPolicy\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"tag:GetResources\",\n                \"cloudwatch:ListTagsForResource\",\n                \"cloudwatch:GetMetricStatistics\",\n                \"cloudwatch:ListMetrics\"\n            ],\n            \"Resource\": \"*\"\n        }\n    ]\n}\n```\n\nThen, create a file $HOME/.aws/credentials as the following, substituting the values with your key and password: \n\n```\n# CREDENTIALS FOR AWS ACCOUNT\naws_region = us-east-1\naws_access_key_id = AYYYYYZZZZZZ3BLXXXXX\naws_secret_access_key = bXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n```\n## Cloudwatch billing considerations\nUsing AWS Cloudwatch for monitoring can incur in additional costs in your AWS billing. Check the [AWS Cloudwatch documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_limits.html) for further details. \n\n# Metrics\nCloudwatch offers the following metrics for AWS Fargate: \n- ContainerInstanceCount\n- CpuUtilized\n- CpuReserved\n- DeploymentCount\n- DesiredTaskCount\n- MemoryUtilized\n- MemoryReserved\n- NetworkRxBytes\n- NetworkTxBytes\n- PendingTaskCount\n- RunningTaskCount\n- ServiceCount\n- StorageReadBytes\n- StorageWriteBytes\n- TaskCount\n- TaskSetCount\n\n\u003e Note: The metrics NetworkRxBytes and NetworkTxBytes are available only for containers in bridge network mode. \n\nFor further information, consult the [Cloudwatch documentation on Fargate metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-ECS.html). "
   },
   {
@@ -92,12 +77,7 @@
     "appVersion": [
       "1.3.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "description": "# Installing the exporter\nTo install the exporter follow this steps:\n\n1. Download the yaml to a local file named 'fargate-deploy.yaml'\n2. Change the field 'credentials' of the secret 'yace-fargate-credentials' and paste the content of the following command:\n```bash\ncat ~/.aws/credentials | base64\n```\n3. Apply the deployment:\n```\nkubectl apply -f fargate-deploy.yaml\n```\n4. You can check that the exporter is working checking that the pods are running:\n```bash\nkubectl -n yace get pods\n```\n",
     "data": "apiVersion: v1\nkind: Namespace\nmetadata:\n  name: yace\n---\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: yace-fargate\n  namespace: yace    \nspec:\n  selector:\n    matchLabels:\n      app: yace-fargate\n  replicas: 1\n  template:\n    metadata:\n      labels:\n        app: yace-fargate\n      annotations:\n        prometheus.io/scrape: \"true\"\n        prometheus.io/port: \"5000\"\n    spec:\n      containers:\n      - name: yace\n        image: quay.io/invisionag/yet-another-cloudwatch-exporter:v0.15.0-alpha\n        ports:\n        - containerPort: 5000\n        volumeMounts:\n          - name: yace-fargate-config\n            mountPath: /tmp/config.yml\n            subPath: config.yml\n          - name: yace-fargate-credentials\n            mountPath: /exporter/.aws/credentials\n            subPath: credentials\n        resources:\n          limits:\n            memory: \"128Mi\"\n            cpu: \"500m\"\n      volumes:\n        - configMap:\n            defaultMode: 420\n            name: yace-fargate-config\n          name: yace-fargate-config\n        - secret:\n            defaultMode: 420\n            secretName: yace-fargate-credentials\n          name: yace-fargate-credentials\n\n---\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: yace-fargate-config\n  namespace: yace\ndata:\n  config.yml: |\n    discovery:\n      jobs:\n      - region: us-east-1\n        type: ecs-containerinsights\n        enableMetricData: true\n        metrics: \n          - name: ContainerInstanceCount\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: ServiceCount\n            statistics:\n            - Average\n            period: 60\n            length: 300\n\n      - region: us-east-1\n        type: ecs-containerinsights\n        enableMetricData: true\n        awsDimensions: \n          - ServiceName\n        metrics: \n          - name: CpuReserved\n            statistics: \n            - Average\n            period: 60\n            length: 300\n          - name: CpuUtilized\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: MemoryReserved\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: MemoryUtilized\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: StorageReadBytes\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: StorageWriteBytes\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: NetworkRxBytes\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: NetworkTxBytes\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: DesiredTaskCount\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: TaskCount\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: PendingTaskCount\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: RunningTaskCount\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: DeploymentCount\n            statistics:\n            - Average\n            period: 60\n            length: 300\n          - name: TaskSetCount\n            statistics:\n            - Average\n            period: 60\n            length: 300\n---\napiVersion: v1\nkind: Secret\nmetadata:\n  name: yace-fargate-credentials\n  namespace: yace\ndata:\n  # Add in credentials the result of: \n  # cat ~/.aws/credentials | base64\n  credentials: |\n    XXXXX\n"
   },
@@ -112,12 +92,7 @@
     "appVersion": [
       "1.3.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "description": "# job:aws_ecs_containerinsights_cpu_utilization_rate:avg\nThis rule calculates the CPU utilization by service.\n# job:aws_ecs_containerinsights_memory_utilization_rate:avg\nThis rule calculates the memory utilization by service.\n",
     "data": "- record: job:aws_ecs_containerinsights_cpu_utilization_rate:avg\n  expr: avg by (dimension_ServiceName)(aws_ecs_containerinsights_cpu_utilized_average / aws_ecs_containerinsights_cpu_reserved_average)\n- record: job:aws_ecs_containerinsights_memory_utilization_rate:avg\n  expr: avg by (dimension_ServiceName)(aws_ecs_containerinsights_memory_utilized_average / aws_ecs_containerinsights_memory_reserved_average)"
   },
@@ -132,12 +107,7 @@
     "appVersion": [
       "1.0.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "configurations": [
       {
         "name": "Lambda Golden Signals",
@@ -166,12 +136,7 @@
     "appVersion": [
       "1.0.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "description": "# Alerts\n## HighFunctionErrorRate\nA Lambda function can end with an error.   \nThis alert triggers when the percentage of executions of a function excess a threshold for a certain period of time. \n\nThe recommended value for this alert is 15% of the functions ended with error for 10 minutes.\n\n## ThrottlingFunction\nLambda has a limited number of concurrent executions per function. \nWhen you reach this limit, the function cannot be executed. The metric 'throttled' gives information of the executions that were not executed because they reached the concurrency limit. \nConstant throttling can indicate that a function is called more times that its reserved concurrency.  \n\nThe recommended value for this alert is to alert when throttling for more than 10 minutes. \n\n# Installing the alerts\n## In Prometheus\nCopy the alerts for Prometheus and paste them inside of the configuration file in the groups section:\n```yaml\n[...]\ngroups:\n- name: example\n    # Insert here the alerts\n    rules: \n``` \n## In Sysdig Monitor\nTo install these alerts in Sysdig Monitor, contact with the support service. \n",
     "configurations": [
       {
@@ -195,12 +160,7 @@
     "appVersion": [
       "1.0.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "data": "# AWS Lambda\nAWS Lambda lets you run code without provisioning or managing servers.With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app..\n\nThe metrics for AWS Fargate are obtained through AWS Cloudwatch. Using the [YACE exporter](https://github.com/ivx/yet-another-cloudwatch-exporter). \n\n# Exporter configuration\n## AWS permissions\nThe exporter needs permissions to access the resources from the AWS account. \n\nFirst, create an AWS IAM policy on your AWS infrastructure allowing read CloudWatch metrics and get resources by tags. Here is a AWS IAM configuration example:\n\n```\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"CloudWatchExporterPolicy\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"tag:GetResources\",\n                \"cloudwatch:ListTagsForResource\",\n                \"cloudwatch:GetMetricStatistics\",\n                \"cloudwatch:ListMetrics\"\n            ],\n            \"Resource\": \"*\"\n        }\n    ]\n}\n```\n    \nThen, create a file $HOME/.aws/credentials as the following, substituting the values with your key and password: \n\n```\n# CREDENTIALS FOR AWS ACCOUNT\naws_region = us-east-1\naws_access_key_id = AYYYYYZZZZZZ3BLXXXXX\naws_secret_access_key = bXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n```\n## Cloudwatch billing considerations\nUsing AWS Cloudwatch for monitoring can incur in additional costs in your AWS billing. Check the [AWS Cloudwatch documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_limits.html) for further details. \n\n# Metrics\nCloudwatch offers the following metrics for AWS Lambda: \n- Invocations\n- Errors\n- Throttles\n- Duration\n\n\nFor further information, consult the [Cloudwatch documentation on Lambda metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics.html). "
   },
   {
@@ -214,12 +174,7 @@
     "appVersion": [
       "1.0.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "description": "# Installing the exporter\nTo install the exporter follow this steps:\n\n1. Download the yaml to a local file named 'lambda-deploy.yaml'\n2. Change the field 'credentials' of the secret 'yace-lambda-credentials' and paste the content of the following command:\n```bash\ncat ~/.aws/credentials | base64\n```\n3. Apply the deployment:\n```\nkubectl apply -f lambda-deploy.yaml\n```\n4. You can check that the exporter is working checking that the pods are running:\n```bash\nkubectl -n yace get pods\n```\n",
     "data": "apiVersion: v1\nkind: Namespace\nmetadata:\n  name: yace\n---\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: yace-lambda\n  namespace: yace    \nspec:\n  selector:\n    matchLabels:\n      app: yace-lambda\n  replicas: 1\n  template:\n    metadata:\n      labels:\n        app: yace-lambda\n      annotations:\n        prometheus.io/scrape: \"true\"\n        prometheus.io/port: \"5000\"\n    spec:\n      containers:\n      - name: yace\n        image: quay.io/invisionag/yet-another-cloudwatch-exporter:v0.15.0-alpha\n        ports:\n        - containerPort: 5000\n        volumeMounts:\n          - name: yace-lambda-config\n            mountPath: /tmp/config.yml\n            subPath: config.yml\n          - name: yace-lambda-credentials\n            mountPath: /exporter/.aws/credentials\n            subPath: credentials\n        resources:\n          limits:\n            memory: \"128Mi\"\n            cpu: \"500m\"\n      volumes:\n        - configMap:\n            defaultMode: 420\n            name: yace-lambda-config\n          name: yace-lambda-config\n        - secret:\n            defaultMode: 420\n            secretName: yace-lambda-credentials\n          name: yace-lambda-credentials\n---\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: yace-lambda-config\n  namespace: yace\ndata:\n  config.yml: |\n    discovery:\n      jobs:\n      - region: us-east-1\n        type: lambda\n        enableMetricData: true\n        metrics: \n          - name: Duration\n            statistics:\n            - Sum\n            - Maximum\n            - Minimum\n            - Average\n            period: 600\n            length: 300\n          - name: Invocations\n            statistics:\n            - Sum\n            period: 600\n            length: 300\n          - name: Errors\n            statistics:\n            - Sum\n            period: 600\n            length: 300\n          - name: Throttles\n            statistics:\n            - Sum\n            period: 600\n            length: 300  \n---\napiVersion: v1\nkind: Secret\nmetadata:\n  name: yace-lambda-credentials\n  namespace: yace\ndata:\n  # Add in credentials the result of: \n  # cat ~/.aws/credentials | base64\n  credentials: |\n    XXXXX\n"
   },
@@ -234,12 +189,7 @@
     "appVersion": [
       "1.0.0"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "description": "# job:aws_lambda_error_rate:avg\nThis rule calculates the error rate by function.\n",
     "data": "- record: job:aws_lambda_error_rate:avg\n  expr: avg by (dimension_FunctionName)(aws_lambda_errors_sum / aws_lambda_invocations_sum)\n"
   },
@@ -255,12 +205,7 @@
       "1.0.0",
       "1.0.1"
     ],
-    "maintainers": [
-      {
-        "name": "sysdiglabs",
-        "link": "https://github.com/sysdiglabs"
-      }
-    ],
+    "maintainers": "Configuration files and dashboards maintained by [Sysdig team](https://sysdig.com/).",
     "data": "# ElasticSearch\nElasticsearch is a distributed, open source search and analytics engine for all types of data, including textual, numerical, geospatial, structured, \nand unstructured. Elasticsearch is built on Apache Lucene and was first released in 2010 by Elasticsearch N.V. (now known as Elastic). \nKnown for its simple REST APIs, distributed nature, speed, and scalability, Elasticsearch is the central component of the Elastic Stack, \na set of open source tools for data ingestion, enrichment, storage, analysis, and visualization. Commonly referred to as the ELK Stack \n(after Elasticsearch, Logstash, and Kibana), the Elastic Stack now includes a rich collection of lightweight shipping agents known as Beats \nfor sending data to Elasticsearch.\n"
   }
 ]
