@@ -4,6 +4,7 @@
 
 <script>
 import showdown from 'showdown'
+import 'showdown-highlightjs-extension'
 
 export default {
   props: {
@@ -26,10 +27,17 @@ export default {
         noHeaderId: true,
         headerLevelStart: this.headerLevelStart,
         openLinksInNewWindow: true,
-        literalMidWordUnderscores: true
+        literalMidWordUnderscores: true,
+        extensions: ['highlightjs']
       })
       return converter.makeHtml(this.content)
     }
   }
 }
 </script>
+<style lang="css">
+div.markdown pre {
+  background-color:#f6f8fa;
+  padding: 16px
+}
+</style>
