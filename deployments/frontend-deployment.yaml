@@ -22,6 +22,6 @@ spec:
         - containerPort: 3000
         env:
           - name: BASE_URL
-            value: http://frontend:3000
+            value: https://staging.promcat.io
           - name: API_URL
-            value: http://backend:8080
+            value: https://staging.api.promcat.io
