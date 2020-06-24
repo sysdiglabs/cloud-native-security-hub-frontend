@@ -1,5 +1,5 @@
 <template>
-  <component :is="resource.kind" :resource="resource" />
+  <component :is="resource.kind" :resource="resource" :resources="resources" />
 </template>
 
 <script>
@@ -19,6 +19,10 @@ export default {
   },
   props: {
     resource: {
+      type: Object,
+      required: true
+    },
+    resources: {
       type: Object,
       required: true
     }
