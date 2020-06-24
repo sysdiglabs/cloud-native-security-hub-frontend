@@ -12,12 +12,12 @@
           <div slot="header" class="header">
             <b-link
               target="_blank"
-              :href="`https://raw.githubusercontent.com/sysdiglabs/prometheus-hub-resources/master/resources/${dashboard.image}`"
+              :href="`https://raw.githubusercontent.com/sysdiglabs/prometheus-hub-resources/${repoBranch}/resources/${dashboard.image}`"
             >
               <b-img
                 left
                 class="image"
-                :src="`https://raw.githubusercontent.com/sysdiglabs/prometheus-hub-resources/master/resources/${dashboard.image}`"
+                :src="`https://raw.githubusercontent.com/sysdiglabs/prometheus-hub-resources/${repoBranch}/resources/${dashboard.image}`"
                 :alt="dashboard.name"
               />
             </b-link>
@@ -53,6 +53,19 @@ export default {
     resource: {
       type: Object,
       required: true
+    },
+    resources: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    repoBranch () {
+      if (process.env.REPO_BRANCH === undefined) {
+        return 'master'
+      } else {
+        return process.env.REPO_BRANCH
+      }
     }
   }
 }

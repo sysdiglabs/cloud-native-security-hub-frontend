@@ -34,6 +34,10 @@ export default {
     resource: {
       type: Object,
       required: true
+    },
+    resources: {
+      type: Object,
+      required: true
     }
   }
 }
