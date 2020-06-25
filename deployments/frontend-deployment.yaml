@@ -25,3 +25,5 @@ spec:
             value: https://staging.promcat.io
           - name: API_URL
             value: https://staging.api.promcat.io
+          - name: REPO_BRANCH
+            value: staging
