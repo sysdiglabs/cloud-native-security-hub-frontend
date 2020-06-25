@@ -1,9 +1,11 @@
 <template>
   <b-row>
     <b-col>
-      <h1 class="title">
-        {{ appName }}
-      </h1>
+      <b-img
+        class="logo-image"
+        :src="appIcon"
+        :alt="appName"
+      />
       <div class="versions">
         <h2 class="version-title">
           Supported Versions
@@ -39,7 +41,7 @@
           class="tab"
           lazy
         >
-          <AppPresentation class="app-presentation" :resource="resource" />
+          <AppPresentation class="app-presentation" :resource="resource" :resources="appResources" />
         </b-tab>
       </b-tabs>
     </b-col>
@@ -72,6 +74,9 @@ export default {
     },
     appVersions () {
       return this.app.availableVersions
+    },
+    appIcon () {
+      return this.app.icon
     },
     currentVersion () {
       return this.$route.params.version || this.appVersions[this.appVersions.length - 1]
@@ -119,6 +124,9 @@ export default {
   font-size: 36px;
   line-height: 36px;
   margin-bottom: 40px;
+}
+.logo-image{
+  height: 70px;
 }
 .versions {
   margin-bottom: 32px;
