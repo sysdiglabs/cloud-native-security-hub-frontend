@@ -32,6 +32,7 @@ jobs:
         password: ${{ secrets.GRC_REGISTRY_SECRET }}
         registry: gcr.io
         repository: mateo-burillo-ns/promcat-frontend
+        dockerfile: Dockerfile.staging
         tags: staging
     - name: Install dependencies for kubectl
       run: |
