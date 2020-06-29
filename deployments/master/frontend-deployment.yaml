@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: promhub
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/mateo-burillo-ns/promcat-frontend:master
+        ports:
+        - containerPort: 3000
+        env:
+          - name: BASE_URL
+            value: https://promcat.io
+          - name: API_URL
+            value: https://api.promcat.io
+          - name: REPO_BRANCH
+            value: staging
