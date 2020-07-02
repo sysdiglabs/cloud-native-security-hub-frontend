@@ -7,7 +7,7 @@
 
       <p>PromCat, short for Prometheus Catalog, is a resource catalog for enterprise-class Prometheus monitoring.</p>
 
-      <b-img-lazy block center src="~/assets/images/about/01_features.png" alt="Features" />
+      <b-img block center :src="`https://github.com/sysdiglabs/promcat-frontend/raw/${repoBranch}/assets/images/about/01_features.png`" alt="Features" />
 
       <p>Prometheus has been revolutionary in the way we monitor our cloud-native environments, attracting immense attention from the open-source community and making the amount of Prometheus monitoring resources explode. Now, there are so many resources available that it's no longer easy to filter out the good ones and discard those that are poorly documented or obsolete.</p>
       <p>On our journey to provide a scalable Prometheus monitoring experience, we found that companies need a reliable toolbox of monitoring integrations to succeed. In addition to scale and security controls, they need a quick answer to the following question: "How can I monitor X, Y and Z in my environment?"</p>
@@ -21,7 +21,7 @@
         </b-link> system requires a tight integration between <strong>metrics sources</strong> (exporters, instrumented services or instrumentation libraries for your applications), Prometheus <strong>metrics collection</strong> (service discovery, jobs, filtering and relabeling or recording rules), <strong>dashboards</strong> and <strong>alerts</strong>. Making all of these different pieces work together is strenuous and requires a significant amount of effort to set up and maintain over time.
       </p>
 
-      <b-img-lazy block center src="~/assets/images/about/02_prometheus_monitoring_diagram.png" alt="Prometheus monitoring diagram" />
+      <b-img block center :src="`https://github.com/sysdiglabs/promcat-frontend/raw/${repoBranch}/assets/images/about/02_prometheus_monitoring_diagram.png`" alt="Features" />
 
       <p>
         Here are some examples of resources you can find:
@@ -39,17 +39,16 @@
       <p>The first one is <strong>segmentation</strong>; there are too many services, platforms, versions and places to look for. It just takes too much time to find the right tools.</p>
       <p>Once found, how can you <strong>evaluate</strong> them and make sure the resources are feature-complete and production-grade? How can you be sure they aren't just proof of concepts?</p>
       <p>And before you can even test the resources, how should you <strong>download</strong> them? Sometimes they are packaged as container images in DockerHub, but occasionally they are not.</p>
-
-      <b-img-lazy block center src="~/assets/images/about/03_incomplete_building.png" alt="Incomplete building" />
+      <b-img block center :src="`https://github.com/sysdiglabs/promcat-frontend/raw/${repoBranch}/assets/images/about/03_incomplete_building.png`" alt="Features" />
 
       <p>It’s hard to <strong>put everything together</strong>, even when using really good exporters or dashboards. The different pieces of the puzzle use various metric names, labels and groupings that aren't necessarily compatible with what you use. You might find compatibility issues between different versions of exporters and specific app versions, dashboards or alerts.</p>
 
-      <b-img-lazy block center src="~/assets/images/about/04_mismatching_pieces.png" alt="Mismatching pieces" />
+      <b-img block center :src="`https://github.com/sysdiglabs/promcat-frontend/raw/${repoBranch}/assets/images/about/04_mismatching_pieces.png`" alt="Features" />
 
       <p>To complicate things even further, there is a <strong>lack of documentation</strong> on how to use and integrate these resources.</p>
       <p>Enterprise monitoring requires <strong>confidence</strong> in the integrations you use, with <strong>support</strong> when you configure monitoring for your environment or when things break. We have heard from our customers that they can easily spend a week trying to figure out which version of a Prometheus exporter, dashboards and alerts they should use for an integration, and how to keep up with changes.</p>
 
-      <b-img-lazy block center src="~/assets/images/about/05_missing_instructions.png" alt="Missing" />
+      <b-img block center :src="`https://github.com/sysdiglabs/promcat-frontend/raw/${repoBranch}/assets/images/about/05_missing_instructions.png`" alt="Features" />
 
       <h2>Supported Prometheus integrations for enterprise-class monitoring</h2>
       <p>The path is pretty clear for us; we want to provide an <strong>enterprise-grade</strong> Prometheus monitoring experience. To achieve this, we are offering a backend that <strong>scales to millions of time series</strong> per second, as well as <strong>long term storage</strong>. On top of this, our product <strong>adapts</strong> to customer workflows with full <strong>Prometheus</strong> compatibility through API and <strong>PromQL</strong> queries, dashboards and alerts. You can keep using the tools that work for you, like Prometheus open-source exporters, or Grafana dashboards.</p>
@@ -80,6 +79,15 @@
 
 export default {
   layout: 'content',
+  computed: {
+    repoBranch () {
+      if (process.env.REPO_BRANCH === undefined) {
+        return 'master'
+      } else {
+        return process.env.REPO_BRANCH
+      }
+    }
+  },
   head () {
     return {
       title: 'About Prometheus Catalog',
