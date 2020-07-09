@@ -15,6 +15,7 @@
       :key="`${config.name}`"
       language="yaml"
       :code="config.data"
+      :filename="`${config.name}`"
     />
   </div>
 </template>
