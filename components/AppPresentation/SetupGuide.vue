@@ -17,6 +17,7 @@
       :key="`${config.name}`"
       language="yaml"
       :code="config.data"
+      :filename="`${config.name}`"
     />
   </div>
 </template>
@@ -45,7 +46,7 @@ export default {
   computed: {
     installInstructions () {
       let instructions = ''
-      instructions += '# Installing dashborads and alerts in Sysdig Monitor:\n'
+      instructions += '# Installing dashboards and alerts in Sysdig Monitor:\n'
       instructions += 'Run this command using your API-TOKEN:\n'
       instructions += '```bash\n'
       instructions += 'docker  run -it --rm \\\n'
