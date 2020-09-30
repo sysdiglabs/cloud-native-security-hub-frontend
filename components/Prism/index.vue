@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h3>
-      {{ `${filename}` }}
-    </h3>
     <pre :class="`language-${language}`" class="prism">
       <b-btn v-if="copyToClipboard" variant="primary" pill class="prism-clipboard-button d-flex align-items-center justify-content-center" @click="copyCode"><Copy /><span>{{ copied ? 'Copied code' : 'Copy Code' }}</span></b-btn>
       <code ref="code" :class="`language-${language}`" v-html="codeWrapper" />

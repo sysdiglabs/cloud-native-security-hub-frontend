@@ -12,13 +12,27 @@
     >
       {{ config.name }}
     </Download>
-    <prism
-      v-for="config in resource.configurations"
-      :key="`${config.name}`"
-      language="yaml"
-      :code="config.data"
-      :filename="`${config.name}`"
-    />
+    <H2>Setup details</H2>
+    <b-tabs
+      class="tabs-lowercase"
+      fill
+      justified
+      content-class="tabs-content mt-3"
+    >
+      <b-tab
+        v-for="config in resource.configurations"
+        :key="`${config.name}`"
+        :title="`${config.name}`"
+        lazy
+        class="tabs-lowercase"
+      >
+        <prism
+          language="yaml"
+          :code="config.data"
+          :filename="`${config.name}`"
+        />
+      </b-tab>
+    </b-tabs>
   </div>
 </template>
 
@@ -60,3 +74,33 @@ export default {
   }
 }
 </script>
+<style scoped lang="scss">
+.tabs-lowercase{
+    ::v-deep .nav-tabs {
+    border-bottom: 1px solid $secondary;
+    .nav-link {
+      font-size: $font-L;
+      line-height: 19px;
+      letter-spacing: 0px !important;
+      text-transform: lowercase !important;
+      color: $secondary;
+      text-align: center;
+      padding-bottom: 16px;
+      &:hover {
+        border: none;
+        color: $primary;
+      }
+      &:focus {
+        border-color: $primary;
+      }
+      &.active {
+        color: black;
+        border-color: $primary;
+        border-style: solid;
+        border-width: 0 0 8px 0;
+        padding-bottom: 16px;
+      }
+    }
+  }
+}
+</style>
