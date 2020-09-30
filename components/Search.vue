@@ -28,7 +28,7 @@
       />
       <b-input-group-append>
         <b-button variant="outline-primary" pill class="btn-search" @click="selectSearch">
-          SEARCH
+          FILTER
         </b-button>
       </b-input-group-append>
       <div class="searchtext d-flex align-items-center">
