@@ -17,6 +17,7 @@
       :key="`${config.name}`"
       language="yaml"
       :code="config.data"
+      :filename="`${config.name}`"
     />
   </div>
 </template>
@@ -45,13 +46,13 @@ export default {
   computed: {
     installInstructions () {
       let instructions = ''
-      instructions += '# Installing dashborads and alerts in Sysdig Monitor:\n'
+      instructions += '# Installing dashboards and alerts in Sysdig Monitor:\n'
       instructions += 'Run this command using your API-TOKEN:\n'
       instructions += '```bash\n'
-      instructions += 'docker  run -it --rm \\ \n'
-      instructions += '\tsysdiglabs/promcat-connect:0.1 \\ \n'
-      instructions += '\tinstall \\ \n'
-      instructions += '\t' + this.resource.appID + ':' + this.resource.appVersion[0] + '\\ \n'
+      instructions += 'docker  run -it --rm \\\n'
+      instructions += '\tsysdiglabs/promcat-connect:0.1 \\\n'
+      instructions += '\tinstall \\\n'
+      instructions += '\t' + this.resource.appID + ':' + this.resource.appVersion[0] + ' \\\n'
       instructions += '\t-t YOUR-API-TOKEN \n'
       instructions += '```\n'
       return instructions
