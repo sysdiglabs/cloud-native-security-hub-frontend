@@ -11,7 +11,7 @@ const contentService = new ContentService(axios)
 
 describe('Content Service', () => {
   it('gets resources', async () => {
-    httpClient.onGet('/resources').reply(200, resourcesResponse)
+    httpClient.onGet('/v1/resources').reply(200, resourcesResponse)
 
     const result = await contentService.getResources()
 
@@ -19,7 +19,7 @@ describe('Content Service', () => {
   })
 
   it('gets a resource by ID', async () => {
-    httpClient.onGet(`/resources/${resource.kind}/${resource.id}`).reply(200, resourcesResponse[0])
+    httpClient.onGet(`/v1/resources/${resource.kind}/${resource.id}`).reply(200, resourcesResponse[0])
 
     const result = await contentService.getResource(resource.kind, resource.id)
 
@@ -27,7 +27,7 @@ describe('Content Service', () => {
   })
 
   it('gets apps', async () => {
-    httpClient.onGet('/apps').reply(200, appsResponse)
+    httpClient.onGet('/v1/apps').reply(200, appsResponse)
 
     const result = await contentService.getApps()
 
@@ -35,7 +35,7 @@ describe('Content Service', () => {
   })
 
   it('gets a app by ID', async () => {
-    httpClient.onGet(`/apps/${app.id}`).reply(200, appsResponse[0])
+    httpClient.onGet(`/v1/apps/${app.id}`).reply(200, appsResponse[0])
 
     const result = await contentService.getApp(app.id)
 
@@ -43,7 +43,7 @@ describe('Content Service', () => {
   })
 
   it('gets sorted app resources by version', async () => {
-    httpClient.onGet(`/apps/${app.id}/${app.availableVersions[0]}/resources`).reply(200, resourcesResponse)
+    httpClient.onGet(`/v1/apps/${app.id}/${app.availableVersions[0]}/resources`).reply(200, resourcesResponse)
 
     const result = await contentService.getAppResourcesByVersion(app.id, app.availableVersions[0])
 
@@ -51,7 +51,7 @@ describe('Content Service', () => {
   })
 
   it('gets a resource by kind, ID and version', async () => {
-    httpClient.onGet(`/resources/${resource.kind}/${resource.id}/${resource.version}`).reply(200, resourcesResponse[0])
+    httpClient.onGet(`/v1/resources/${resource.kind}/${resource.id}/${resource.version}`).reply(200, resourcesResponse[0])
 
     const result = await contentService.getResourceByVersion(resource.kind, resource.id, resource.version)
 

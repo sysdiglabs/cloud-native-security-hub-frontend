@@ -8,7 +8,7 @@ describe('Header', () => {
   it('shows small search with brand', () => {
     wrapper = shallowMount(Header)
 
-    expect(wrapper.find(Search).props()).toEqual({ autofocus: undefined, size: undefined })
+    expect(wrapper.findComponent(Search).props()).toEqual({ autofocus: undefined, size: undefined })
   })
 
   it('shows hero title with big search', () => {
