@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Prism from '@/components/Prism'
 import Markdown from '@/components/Markdown'
 import Download from '@/components/Download'
@@ -44,6 +45,10 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      appResources: state => state.appResources,
+      app: state => state.app
+    }),
     installInstructions () {
       let instructions = ''
       instructions += '# Installing dashboards and alerts in Sysdig Monitor:\n'
@@ -52,10 +57,16 @@ export default {
       instructions += 'docker  run -it --rm \\\n'
       instructions += '\tsysdiglabs/promcat-connect:0.1 \\\n'
       instructions += '\tinstall \\\n'
-      instructions += '\t' + this.resource.appID + ':' + this.resource.appVersion[0] + ' \\\n'
+      instructions += '\t' + this.resource.appID + ':' + this.currentVersion + ' \\\n'
       instructions += '\t-t YOUR-API-TOKEN \n'
       instructions += '```\n'
       return instructions
+    },
+    appVersions () {
+      return this.app.availableVersions
+    },
+    currentVersion () {
+      return this.$route.params.version || this.appVersions[this.appVersions.length - 1]
     }
   }
 }
