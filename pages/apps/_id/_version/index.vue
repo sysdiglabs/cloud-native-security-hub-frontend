@@ -104,7 +104,7 @@ export default {
   },
   head () {
     return {
-      title: `${this.appName} prometheus catalog version ${this.$route.params.version}`,
+      title: `Monitoring ${this.appName} with Prometheus: Configuration, dashboards and alerts.`,
       meta: [
         { hid: 'description', name: 'description', content: `${this.appName} app details` }
       ],

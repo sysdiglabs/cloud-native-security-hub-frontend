@@ -4,12 +4,12 @@ require('dotenv').config()
 export default {
   mode: 'universal',
   head: {
-    titleTemplate: 'PromCat - %s',
-    title: 'A resource catalog for enterprise-class Prometheus monitoring',
+    titleTemplate: '%s',
+    title: 'PromCat.io - A resource catalog for enterprise-class Prometheus monitoring',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Discover and share Prometheus best practices and configurations' }
+      { hid: 'description', name: 'description', content: 'Discover and share best Prometheus configurations, dashboards and alerts.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
