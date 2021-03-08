@@ -3,16 +3,16 @@
 exports[`Footer should display as expected 1`] = `
 "<footer class=\\"footer\\">
   <b-container-stub tag=\\"div\\">
-    <b-row-stub tag=\\"div\\" alignh=\\"end\\">
-      <b-col-stub md=\\"12\\" lg=\\"8\\" tag=\\"div\\" class=\\"d-flex align-items-center justify-content-center align-items-lg-start justify-content-lg-start\\">
+    <b-row-stub alignh=\\"end\\" tag=\\"div\\">
+      <b-col-stub lg=\\"8\\" md=\\"12\\" tag=\\"div\\" class=\\"d-flex align-items-center justify-content-center align-items-lg-start justify-content-lg-start\\">
         <div class=\\"footer-about\\">
           <div class=\\"footer-about__promcat\\">
-            <b-link-stub target=\\"_self\\" to=\\"/\\" event=\\"click\\" routertag=\\"a\\">
+            <b-link-stub event=\\"click\\" routertag=\\"a\\" target=\\"_self\\" to=\\"/\\">
               <logo-stub class=\\"logo\\"></logo-stub>
             </b-link-stub>
             <div class=\\"contribute\\">
               <ul class=\\"link-list\\">
-                <b-link-stub target=\\"_self\\" to=\\"/about\\" event=\\"click\\" routertag=\\"a\\" tag=\\"li\\" class=\\"link\\">
+                <b-link-stub event=\\"click\\" routertag=\\"a\\" target=\\"_self\\" to=\\"/about\\" tag=\\"li\\" class=\\"link\\">
                   What is PromCat?<arrowright-stub class=\\"icon\\"></arrowright-stub>
                 </b-link-stub>
               </ul>
@@ -21,19 +21,19 @@ exports[`Footer should display as expected 1`] = `
           <div class=\\"footer-about__social-network\\">
             <ul class=\\"link-list\\">
               <li>
-                <b-link-stub href=\\"https://github.com/sysdiglabs/promcat-resources\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link github\\">
+                <b-link-stub event=\\"click\\" href=\\"https://github.com/sysdiglabs/promcat-resources\\" routertag=\\"a\\" target=\\"_blank\\" class=\\"link github\\">
                   <github-stub></github-stub>
                   GitHub
                 </b-link-stub>
               </li>
               <li>
-                <b-link-stub href=\\"https://slack.sysdig.com/\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link slack\\">
+                <b-link-stub event=\\"click\\" href=\\"https://slack.sysdig.com/\\" routertag=\\"a\\" target=\\"_blank\\" class=\\"link slack\\">
                   <slack-stub></slack-stub>
                   Join us on Slack
                 </b-link-stub>
               </li>
               <li>
-                <b-link-stub href=\\"https://github.com/sysdiglabs/promcat-resources/issues\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\" class=\\"link issue\\">
+                <b-link-stub event=\\"click\\" href=\\"https://github.com/sysdiglabs/promcat-resources/issues\\" routertag=\\"a\\" target=\\"_blank\\" class=\\"link issue\\">
                   <issue-stub></issue-stub>
                   File an issue
                 </b-link-stub>
@@ -41,13 +41,13 @@ exports[`Footer should display as expected 1`] = `
             </ul>
           </div>
           <p class=\\"footer-about__copyright\\">
-            © Copyright 2020 Sysdig, Inc. All Rights Reserved.
+            © Copyright 2021 Sysdig, Inc. All Rights Reserved.
           </p>
         </div>
       </b-col-stub>
-      <b-col-stub md=\\"12\\" lg=\\"4\\" tag=\\"div\\" class=\\"d-flex align-items-center justify-content-center align-items-lg-end justify-content-lg-end\\">
+      <b-col-stub lg=\\"4\\" md=\\"12\\" tag=\\"div\\" class=\\"d-flex align-items-center justify-content-center align-items-lg-end justify-content-lg-end\\">
         <div class=\\"sponsor text-uppercase\\"><span class=\\"sponsored-by\\">A project by</span>
-          <b-link-stub href=\\"https://sysdig.com/\\" target=\\"_blank\\" event=\\"click\\" routertag=\\"a\\"><span class=\\"sr-only\\">Sysdig</span>
+          <b-link-stub event=\\"click\\" href=\\"https://sysdig.com/\\" routertag=\\"a\\" target=\\"_blank\\"><span class=\\"sr-only\\">Sysdig</span>
             <sysdiglogo-stub class=\\"sysdig-logo\\"></sysdiglogo-stub>
           </b-link-stub>
         </div>
