@@ -66,13 +66,14 @@ export default {
     installInstructions () {
       let instructions = ''
       instructions += '# Installing dashboards and alerts in Sysdig Monitor:\n'
-      instructions += 'Run this command using your API-TOKEN:\n'
+      instructions += 'Run this command using your API-TOKEN (-u argument is optional):\n'
       instructions += '```bash\n'
       instructions += 'docker  run -it --rm \\\n'
       instructions += '\tsysdiglabs/promcat-connect:0.1 \\\n'
       instructions += '\tinstall \\\n'
       instructions += '\t' + this.resource.appID + ':' + this.currentVersion + ' \\\n'
-      instructions += '\t-t YOUR-API-TOKEN \n'
+      instructions += '\t-t YOUR-API-TOKEN \\\n'
+      instructions += '\t-u https://app.sysdigcloud.com/ \n'
       instructions += '```\n'
       return instructions
     },
