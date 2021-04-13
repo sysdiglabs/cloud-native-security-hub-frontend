@@ -30,6 +30,7 @@
       </div>
       <b-tabs
         class="tabs"
+        v-model="tabIndex"
         fill
         justified
         content-class="tabs-content mt-3"
@@ -54,12 +55,34 @@ import AppPresentation from '@/components/AppPresentation'
 import { getCanonicalForApp } from '@/infrastructure/Canonical'
 
 export default {
+  data () {
+    return {
+      tabIndex: 0
+    }
+  },
   components: {
     AppPresentation
   },
   layout: 'content',
   async fetch ({ store, params }) {
     await store.dispatch('getAppAndResourcesByVersion', { id: params.id, version: params.version })
+  },
+  created () {
+    if (!this.$root._route.hash) {
+      return
+    }
+
+    const visibleTab = this.$root._route.hash.replace('#', '')
+    const findTabIndex = (resources, candidate) => {
+      for (let index = 0; index < resources.length; index++) {
+        if (resources[index].kind === candidate) {
+          return index
+        }
+      }
+      return 0
+    }
+
+    this.tabIndex = findTabIndex(this.appResources, visibleTab)
   },
   computed: {
     ...mapState({
