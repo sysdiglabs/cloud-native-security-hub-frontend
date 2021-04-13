@@ -37,7 +37,7 @@ export default {
       required: true
     },
     resources: {
-      type: Object,
+      type: Array,
       required: true
     }
   }
