@@ -26,6 +26,6 @@ jobs:
       run: |
         echo "$GOOGLE_APPLICATION_CREDENTIALS" | base64 --decode > /tmp/config
         export GOOGLE_APPLICATION_CREDENTIALS=/tmp/config
-        export KUBECONFIG=deployment/promhub_kubeconfig
+        export KUBECONFIG=deployments/promhub_kubeconfig
         chmod +x deployments/master/deploy.sh
         sh ./deployments/master/deploy.sh
