@@ -66,7 +66,7 @@ export default {
     installInstructions () {
       let instructions = ''
       instructions += '# Installing dashboards and alerts in Sysdig Monitor:\n'
-      instructions += '<i>Note: This instructions are only for on-prem customers and legacy environments. All these dashboards and alerts are available out-of-the-box in Sysdig monitor platform. '
+      instructions += '<i>Note: These instructions are only for on-prem customers and legacy environments. All these dashboards and alerts are available out-of-the-box in Sysdig monitor platform. '
       instructions += 'Here is the list of <a target="_blank" href="https://docs.sysdig.com/en/docs/sysdig-monitor/dashboards/dashboard-templates/">all the dashboards included in the platform</a>.</i>\n\n'
       instructions += 'Run this command using your API-TOKEN (-u argument is optional):\n'
       instructions += '```bash\n'
