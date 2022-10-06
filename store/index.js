@@ -12,12 +12,12 @@ export const getters = {
   categories: state => [...new Set(state.apps.flatMap(app => app.keywords))]
     .sort((a, b) => a.localeCompare(b)),
 
-  isSelectedCategory: state => category => state.selectedCategories.some(c => c === category),
+  isSelectedCategory: state => category => state.selectedCategories.includes(c => c === category),
 
   apps: (state, getters) => {
     let apps = state.apps
     if (state.selectedCategories.length) {
-      apps = apps.filter(app => app.keywords.some(keyword => getters.isSelectedCategory(keyword)))
+      apps = apps.filter(app => app.keywords.includes(keyword => getters.isSelectedCategory(keyword)))
     }
     return apps
   }
@@ -57,9 +57,15 @@ export const actions = {
   async getAppAndResourcesByVersion ({ commit }, { id, version }) {
     const app = await this.$services.contentService.getApp(id)
     const appResources = await this.$services.contentService.getAppResourcesByVersion(id, version || app.availableVersions[0])
+    // TODO 'Grafana' needs to be parametrized
+    const promcatAppResources = appResources
+      .map(resource => resource.kind === 'Dashboard'
+        ? { ...resource, configurations: resource.configurations.filter(config => config.kind === 'Grafana') }
+        : resource)
+      .filter(resource => resource.kind !== 'Dashboard' || resource.configurations.length > 0)
 
     commit('app', app)
-    commit('appResources', appResources.sort(resourcesByOrder))
+    commit('appResources', promcatAppResources.sort(resourcesByOrder))
   },
 
   toggleCategory ({ commit, getters }, category) {
