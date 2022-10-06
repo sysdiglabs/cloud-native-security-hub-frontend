@@ -1,10 +1,10 @@
 <template>
   <div>
     <b-img
-      v-if="sysdigDashboardImage.length > 0"
+      v-if="dashboard !== null"
       class="image"
-      :src="`https://raw.githubusercontent.com/sysdiglabs/prometheus-hub-resources/${repoBranch}/resources/${sysdigDashboardImage[0].image}`"
-      :alt="sysdigDashboardImage[0].name"
+      :src="`https://raw.githubusercontent.com/sysdiglabs/prometheus-hub-resources/${repoBranch}/resources/${dashboard.image}`"
+      :alt="`${dashboard.name}`"
     />
     <markdown :header-level-start="2" :content="resource.description" />
   </div>
@@ -28,17 +28,20 @@ export default {
     }
   },
   computed: {
-    sysdigDashboardImage () {
+    dashboard () {
       const dashboardResource = this.resources.filter(resource => resource.kind === 'Dashboard')
-      const sysdigDashboards = dashboardResource[0].configurations.filter(configuration => configuration.kind === 'Sysdig')
-      return sysdigDashboards
+
+      if (!dashboardResource || dashboardResource.length === 0) {
+        return null
+      }
+
+      const dashboards = dashboardResource[0].configurations
+        .filter(configuration => configuration.kind === 'Grafana')
+        .map(({ image, name }) => ({ image, name }))
+      return dashboards.length > 0 ? dashboards[0] : null // TODO default image here?
     },
     repoBranch () {
-      if (process.env.REPO_BRANCH === undefined) {
-        return 'master'
-      } else {
-        return process.env.REPO_BRANCH
-      }
+      return process.env.REPO_BRANCH === undefined ? 'master' : process.env.REPO_BRANCH
     }
   }
 }
