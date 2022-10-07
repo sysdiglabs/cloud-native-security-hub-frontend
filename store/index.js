@@ -62,7 +62,7 @@ export const actions = {
       .map(resource => resource.kind === 'Dashboard'
         ? { ...resource, configurations: resource.configurations.filter(config => config.kind === 'Grafana') }
         : resource)
-      .filter(resource => resource.kind !== 'Dashboard' || resource.configurations.length > 0)
+      .filter(resource => resource.kind !== 'Dashboard' || !resource.configurations || resource.configurations.length > 0)
 
     commit('app', app)
     commit('appResources', promcatAppResources.sort(resourcesByOrder))
