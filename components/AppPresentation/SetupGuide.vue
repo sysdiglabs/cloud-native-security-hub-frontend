@@ -2,7 +2,7 @@
   <div>
     <markdown :header-level-start="2" :content="resource.description" />
     <markdown :header-level-start="2" :content="installInstructions" />
-    <div v-if="resource.configurations.length > 0">
+    <div v-if="resource.configurations && resource.configurations.length > 0">
       <H2>Setup files</H2>
       <Download
         v-for="config in resource.configurations"
