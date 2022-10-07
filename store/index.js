@@ -1,6 +1,7 @@
 const resourcesOrder = ['Description', 'SetupGuide', 'Dashboard', 'Alert', 'RecordingRule']
 const resourcesByOrder = (a, b) => resourcesOrder.indexOf(a.kind) - resourcesOrder.indexOf(b.kind)
 
+const hasGrafanaDashboards = resource => resource.kind !== 'Dashboard' || (resource.configurations && resource.configurations.length > 0)
 export const state = () => ({
   apps: [],
   app: {},
@@ -59,10 +60,11 @@ export const actions = {
     const appResources = await this.$services.contentService.getAppResourcesByVersion(id, version || app.availableVersions[0])
     // TODO 'Grafana' needs to be parametrized
     const promcatAppResources = appResources
+      .filter(hasGrafanaDashboards)
       .map(resource => resource.kind === 'Dashboard'
         ? { ...resource, configurations: resource.configurations.filter(config => config.kind === 'Grafana') }
         : resource)
-      .filter(resource => resource.kind !== 'Dashboard' || !resource.configurations || resource.configurations.length > 0)
+      .filter(hasGrafanaDashboards)
 
     commit('app', app)
     commit('appResources', promcatAppResources.sort(resourcesByOrder))

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "nuxt build",
     "start": "nuxt",
+    "start:staging": "API_URL=https://staging.api.promcat.io GOOGLE_ANALYTICS_ID=UA-40398182-26 BASE_URL=https://staging.promcat.io REPO_BRANCH=staging nuxt",
     "serve": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
