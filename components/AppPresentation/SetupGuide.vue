@@ -2,37 +2,39 @@
   <div>
     <markdown :header-level-start="2" :content="resource.description" />
     <markdown :header-level-start="2" :content="installInstructions" />
-    <H2>Setup files</H2>
-    <Download
-      v-for="config in resource.configurations"
-      :key="config.name"
-      class="download mr-2"
-      :data="config.data"
-      :filename="`${config.name}`"
-    >
-      {{ config.name }}
-    </Download>
-    <H2>Setup details</H2>
-    <b-tabs
-      class="tabs-lowercase"
-      fill
-      justified
-      content-class="tabs-content mt-3"
-    >
-      <b-tab
+    <div v-if="resource.configurations && resource.configurations.length > 0">
+      <H2>Setup files</H2>
+      <Download
         v-for="config in resource.configurations"
-        :key="`${config.name}`"
-        :title="`${config.name}`"
-        lazy
-        class="tabs-lowercase"
+        :key="config.name"
+        class="download mr-2"
+        :data="config.data"
+        :filename="`${config.name}`"
       >
-        <prism
-          language="yaml"
-          :code="config.data"
-          :filename="`${config.name}`"
-        />
-      </b-tab>
-    </b-tabs>
+        {{ config.name }}
+      </Download>
+      <H2>Setup details</H2>
+      <b-tabs
+        class="tabs-lowercase"
+        fill
+        justified
+        content-class="tabs-content mt-3"
+      >
+        <b-tab
+          v-for="config in resource.configurations"
+          :key="`${config.name}`"
+          :title="`${config.name}`"
+          lazy
+          class="tabs-lowercase"
+        >
+          <prism
+            language="yaml"
+            :code="config.data"
+            :filename="`${config.name}`"
+          />
+        </b-tab>
+      </b-tabs>
+    </div>
   </div>
 </template>
 
@@ -64,20 +66,7 @@ export default {
       app: state => state.app
     }),
     installInstructions () {
-      let instructions = ''
-      instructions += '# Installing dashboards and alerts in Sysdig Monitor:\n'
-      instructions += '<i>Note: This instructions are only for on-prem customers and legacy environments. All these dashboards and alerts are available out-of-the-box in Sysdig monitor platform. '
-      instructions += 'Here is the list of <a target="_blank" href="https://docs.sysdig.com/en/docs/sysdig-monitor/dashboards/dashboard-templates/">all the dashboards included in the platform</a>.</i>\n\n'
-      instructions += 'Run this command using your API-TOKEN (-u argument is optional):\n'
-      instructions += '```bash\n'
-      instructions += 'docker  run -it --rm \\\n'
-      instructions += '\tsysdiglabs/promcat-connect:0.1 \\\n'
-      instructions += '\tinstall \\\n'
-      instructions += '\t' + this.resource.appID + ':' + this.currentVersion + ' \\\n'
-      instructions += '\t-t YOUR-API-TOKEN \\\n'
-      instructions += '\t-u https://app.sysdigcloud.com/ \n'
-      instructions += '```\n'
-      return instructions
+      return ''
     },
     appVersions () {
       return this.app.availableVersions
