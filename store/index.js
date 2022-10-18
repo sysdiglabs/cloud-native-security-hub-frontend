@@ -13,15 +13,9 @@ export const getters = {
   categories: state => [...new Set(state.apps.flatMap(app => app.keywords))]
     .sort((a, b) => a.localeCompare(b)),
 
-  isSelectedCategory: state => category => state.selectedCategories.includes(c => c === category),
+  isSelectedCategory: state => category => state.selectedCategories.includes(category),
 
-  apps: (state, getters) => {
-    let apps = state.apps
-    if (state.selectedCategories.length) {
-      apps = apps.filter(app => app.keywords.includes(keyword => getters.isSelectedCategory(keyword)))
-    }
-    return apps
-  }
+  apps: ({ apps, selectedCategories }, getters) => selectedCategories.length ? apps.filter(({ keywords }) => keywords.some(keyword => getters.isSelectedCategory(keyword))) : apps
 }
 
 export const mutations = {
