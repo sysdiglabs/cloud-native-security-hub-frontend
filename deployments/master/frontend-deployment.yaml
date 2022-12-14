@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gcr.io/mateo-burillo-ns/promcat-frontend:master
+        image: gcr.io/mateo-burillo-ns/promcat-frontend:latest
         ports:
         - containerPort: 3000
         env:
